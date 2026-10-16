@@ -1,0 +1,119 @@
+/* ========================================================
+   Halaman UD.ULFA - 100% Sesuai Background & Desain Referensi
+   ======================================================== */
+
+.login-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0cff1;
+  background-image: url('/bg-waves.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Center Content */
+.login-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 760px;
+  width: 100%;
+}
+
+.login-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.store-logo-img {
+  display: block;
+  width: 72px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #111111;
+  line-height: 1.15;
+}
+
+.brand-subtitle {
+  margin: 4px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  letter-spacing: 0.2px;
+}
+
+.brand-services {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.services-line {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: #0d0d0d;
+  letter-spacing: 0.2px;
+  line-height: 1.35;
+}
+
+.brand-slogan-container {
+  margin-top: 56px;
+}
+
+.brand-slogan {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: 0.2px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 640px) {
+  .brand-title {
+    font-size: 32px;
+  }
+
+  .brand-subtitle {
+    font-size: 14px;
+  }
+
+  .brand-services {
+    margin-top: 36px;
+  }
+
+  .services-line {
+    font-size: 15px;
+  }
+
+  .brand-slogan-container {
+    margin-top: 42px;
+  }
+
+  .brand-slogan {
+    font-size: 14px;
+  }
+}
