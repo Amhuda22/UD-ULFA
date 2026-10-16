@@ -1,7 +1,74 @@
 /* ========================================================
-   Halaman UD.ULFA - 100% Sesuai Background & Desain Referensi
+   Halaman UD.ULFA - 100% Sesuai Background & Desain Referensi ACC Klien
    ======================================================== */
 
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0ceee;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Tablet Mode Background */
+.page-wrapper.wrapper-tablet-mode {
+  background-color: #1e1a24;
+  background-image: radial-gradient(circle at 50% 50%, #2e2637 0%, #17131c 100%);
+  padding: 40px 20px 80px;
+}
+
+/* Tablet Chassis Frame */
+.tablet-chassis {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tablet-chassis.active {
+  max-width: 960px;
+  width: 100%;
+  aspect-ratio: 16 / 10.8;
+  background: #0d0b10;
+  border-radius: 34px;
+  padding: 14px 18px;
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 0 2px #26212e;
+}
+
+/* Tablet Bezel Camera Notch (Left bezel in landscape) */
+.tablet-camera {
+  display: none;
+}
+
+.tablet-chassis.active .tablet-camera {
+  display: block;
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 38px;
+  background: #1f1b26;
+  border-radius: 4px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8);
+  z-index: 20;
+}
+
+.tablet-speaker {
+  display: none;
+}
+
+/* Layar / Screen Container */
 .login-screen {
   position: relative;
   min-height: 100vh;
@@ -9,13 +76,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0cff1;
+  background-color: #ebd0ef;
   background-image: url('/bg-waves.png');
-  background-size: 100% 100%;
-  background-position: center;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.tablet-chassis.active .login-screen {
+  min-height: auto;
+  height: 100%;
+  border-radius: 22px;
+  background-size: 100% 100%;
 }
 
 /* Center Content */
@@ -26,91 +100,211 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 24px;
-  max-width: 760px;
+  padding: 48px 24px;
+  max-width: 780px;
   width: 100%;
+  box-sizing: border-box;
+  user-select: none;
 }
 
+/* Logo Storefront SVG */
 .login-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  transition: transform 0.25s ease;
 }
 
-.store-logo-img {
+.login-icon-wrapper:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.store-logo-img,
+.store-logo-svg {
   display: block;
-  width: 72px;
+  width: 92px;
   height: auto;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
 }
 
+/* Brand Name */
 .brand-title {
   margin: 0;
-  font-size: 42px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 46px;
   font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #111111;
+  letter-spacing: -0.5px;
+  color: #0b090e;
   line-height: 1.15;
 }
 
+/* Subtitle */
 .brand-subtitle {
   margin: 4px 0 0;
-  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
   font-weight: 700;
-  color: #1e1e1e;
-  letter-spacing: 0.2px;
+  color: #1a171f;
+  letter-spacing: 0.1px;
 }
 
+/* Services / Categories */
 .brand-services {
-  margin-top: 48px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .services-line {
   margin: 0;
-  font-size: 19px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 21px;
   font-weight: 800;
-  color: #0d0d0d;
-  letter-spacing: 0.2px;
+  color: #0b090e;
+  letter-spacing: 0.1px;
   line-height: 1.35;
 }
 
+/* Slogan */
 .brand-slogan-container {
-  margin-top: 56px;
+  margin-top: 58px;
 }
 
 .brand-slogan {
   margin: 0;
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  font-size: 16.5px;
-  font-weight: 500;
-  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 600;
+  color: #17141d;
   letter-spacing: 0.2px;
 }
 
-/* Responsive adjustment */
-@media (max-width: 640px) {
+/* Floating View Switcher Toggle */
+.view-toggle-bar {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 100;
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(186, 71, 217, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #433c4a;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: #8f26a8;
+  background: rgba(186, 71, 217, 0.08);
+}
+
+.toggle-btn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #a73ec9, #8426a8);
+  box-shadow: 0 3px 10px rgba(167, 62, 201, 0.35);
+}
+
+/* Responsive adjustment for Mobile / Smaller Screens */
+@media (max-width: 768px) {
+  .tablet-chassis.active {
+    aspect-ratio: auto;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .tablet-chassis.active .tablet-camera {
+    display: none;
+  }
+
+  .tablet-chassis.active .login-screen {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
   .brand-title {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .brand-subtitle {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .brand-services {
-    margin-top: 36px;
+    margin-top: 38px;
   }
 
   .services-line {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .brand-slogan-container {
-    margin-top: 42px;
+    margin-top: 44px;
+  }
+
+  .brand-slogan {
+    font-size: 15.5px;
+  }
+
+  .view-toggle-bar {
+    bottom: 12px;
+    right: 12px;
+    padding: 4px;
+  }
+
+  .toggle-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-content {
+    padding: 36px 18px;
+  }
+
+  .brand-title {
+    font-size: 30px;
+  }
+
+  .brand-subtitle {
+    font-size: 14.5px;
+  }
+
+  .brand-services {
+    margin-top: 32px;
+  }
+
+  .services-line {
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+
+  .brand-slogan-container {
+    margin-top: 36px;
   }
 
   .brand-slogan {
