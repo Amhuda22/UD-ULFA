@@ -1,12 +1,17 @@
-function StoreLogo({ className = '', size = 92, alt = 'Logo UD.ULFA Toko' }) {
-  // Aset resmi ikon toko resolusi tinggi tanpa background (100% transparan)
+function StoreLogo({ className = '', width = 50, height, alt = 'Logo UD.ULFA Toko' }) {
   return (
     <img
-      src="/store-logo.png?v=2"
+      src="/store-logo.png"
       alt={alt}
       className={`store-logo-img ${className}`}
-      width={size}
-      height={Math.round(size * (739 / 856))}
+      width={width}
+      height={height || Math.round(width * (739 / 856))}
+      style={{
+        width: `${width}px`,
+        height: height ? `${height}px` : 'auto',
+        objectFit: 'contain',
+        display: 'block'
+      }}
       loading="eager"
       decoding="async"
     />

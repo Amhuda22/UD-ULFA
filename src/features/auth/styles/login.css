@@ -1,5 +1,5 @@
 /* ========================================================
-   Halaman UD.ULFA - 100% Sesuai Background & Desain Referensi ACC Klien
+   Halaman Login UD.ULFA - Sesuai 100% Mockup Desain Tablet Klien
    ======================================================== */
 
 .page-wrapper {
@@ -8,20 +8,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0ceee;
-  transition: background-color 0.3s ease;
+  background-color: #deb7e1;
+  background-image: radial-gradient(ellipse at 80% 20%, #f1daf3 0%, #ddb7e2 45%, #ca9ccf 100%);
+  transition: background 0.3s ease;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-/* Tablet Mode Background */
+/* Tablet Frame Shell Mode (Default Sesuai Mockup Desain) */
 .page-wrapper.wrapper-tablet-mode {
-  background-color: #1e1a24;
-  background-image: radial-gradient(circle at 50% 50%, #2e2637 0%, #17131c 100%);
-  padding: 40px 20px 80px;
+  background-color: #1a1622;
+  background-image: radial-gradient(circle at 50% 50%, #2b2336 0%, #130f1a 100%);
+  padding: 30px 20px 70px;
 }
 
-/* Tablet Chassis Frame */
 .tablet-chassis {
   position: relative;
   width: 100%;
@@ -36,16 +36,16 @@
   max-width: 960px;
   width: 100%;
   aspect-ratio: 16 / 10.8;
-  background: #0d0b10;
-  border-radius: 34px;
-  padding: 14px 18px;
+  background: #0b090f;
+  border-radius: 36px;
+  padding: 13px 17px;
   box-shadow:
-    0 25px 60px -12px rgba(0, 0, 0, 0.65),
+    0 25px 65px -10px rgba(0, 0, 0, 0.7),
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    inset 0 0 0 2px #26212e;
+    inset 0 0 0 2px #26202e;
 }
 
-/* Tablet Bezel Camera Notch (Left bezel in landscape) */
+/* Tablet Bezel Camera Notch (Left bezel in landscape mode) */
 .tablet-camera {
   display: none;
 }
@@ -57,10 +57,10 @@
   top: 50%;
   transform: translateY(-50%);
   width: 5px;
-  height: 38px;
-  background: #1f1b26;
+  height: 40px;
+  background: #1e1925;
   border-radius: 4px;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.85);
   z-index: 20;
 }
 
@@ -76,11 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ebd0ef;
-  background-image: url('/bg-waves.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: radial-gradient(ellipse at 80% 20%, #f1daf3 0%, #ddb7e2 45%, #ca9ccf 100%);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -88,101 +84,266 @@
 .tablet-chassis.active .login-screen {
   min-height: auto;
   height: 100%;
-  border-radius: 22px;
-  background-size: 100% 100%;
+  border-radius: 24px;
 }
 
-/* Center Content */
-.login-content {
+/* Inner Screen Layout */
+.login-screen-inner {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 48px 24px;
-  max-width: 780px;
+  justify-content: center;
   width: 100%;
+  height: 100%;
+  padding: 24px 20px;
   box-sizing: border-box;
   user-select: none;
 }
 
-/* Logo Storefront SVG */
-.login-icon-wrapper {
+/* ========================================================
+   Brand Header (Logo Storefront + Teks UD.ULFA Berdampingan)
+   ======================================================== */
+.brand-header-inline {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
-  transition: transform 0.25s ease;
+  gap: 14px;
+  margin-bottom: 22px;
+  transform: translateY(-20px);
 }
 
-.login-icon-wrapper:hover {
-  transform: translateY(-2px) scale(1.02);
+.brand-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.store-logo-img,
-.store-logo-svg {
+.store-logo-svg,
+.store-logo-img {
   display: block;
-  width: 92px;
-  height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.08));
 }
 
-/* Brand Name */
-.brand-title {
-  margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 46px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: #0b090e;
-  line-height: 1.15;
-}
-
-/* Subtitle */
-.brand-subtitle {
-  margin: 4px 0 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1a171f;
-  letter-spacing: 0.1px;
-}
-
-/* Services / Categories */
-.brand-services {
-  margin-top: 50px;
+.brand-header-text {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.services-line {
+.brand-header-title {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 21px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 28px;
   font-weight: 800;
   color: #0b090e;
-  letter-spacing: 0.1px;
-  line-height: 1.35;
+  line-height: 1.1;
+  letter-spacing: -0.2px;
 }
 
-/* Slogan */
-.brand-slogan-container {
-  margin-top: 58px;
+.brand-header-subtitle {
+  margin: 2px 0 0 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b090e;
+  letter-spacing: -0.1px;
 }
 
-.brand-slogan {
-  margin: 0;
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  font-size: 18px;
+/* ========================================================
+   Login Card (Card Putih Rounded dengan Shadow Halus)
+   ======================================================== */
+.login-card {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow:
+    0 16px 42px rgba(45, 12, 52, 0.12),
+    0 3px 10px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 360px;
+  padding: 11px 28px 24px;
+  box-sizing: border-box;
+  text-align: center;
+  animation: cardFadeIn 0.35s ease-out;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card-title {
+  margin: 0 0 3px 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: #050407;
+  letter-spacing: -0.3px;
+}
+
+.login-card-subtitle {
+  margin: 0 0 22px 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #232028;
+}
+
+/* Form & Input Groups */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-field-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.6px solid #234c38;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.login-field-box:focus-within {
+  border-color: #123022;
+  box-shadow: 0 0 0 3px rgba(35, 76, 56, 0.15);
+}
+
+.field-icon {
+  color: #0b090e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.field-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #0b090e;
+  padding: 0;
+  width: 100%;
+}
+
+.field-input::placeholder {
+  color: #0b090e;
+  font-weight: 500;
+  opacity: 1;
+}
+
+/* Feedback Message */
+.login-feedback-msg {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.login-feedback-msg.success {
+  background: #e8f7ee;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.login-feedback-msg.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Gradient Login Button (Sesuai 100% Sampel Gambar Klien) */
+.login-gradient-btn {
+  width: 100%;
+  height: 44px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  margin-top: 4px;
+  background: linear-gradient(90deg, #421040 0%, #632e62 20%, #7f4c7e 35%, #9a6999 50%, #b586b5 65%, #d1a3d1 80%, #f1c7f2 100%);
+  color: #ffffff;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(66, 16, 64, 0.22);
+  transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.login-gradient-btn:hover:not(:disabled) {
+  opacity: 0.94;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(61, 20, 66, 0.35);
+}
+
+.login-gradient-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-gradient-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Lupa Pasword Button */
+.forgot-pasword-btn {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 14px auto 0;
+  padding: 0;
+  display: block;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #050407;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.forgot-pasword-btn:hover {
+  text-decoration: underline;
+  color: #234c38;
+}
+
+/* ========================================================
+   Footer Copyright
+   ======================================================== */
+.login-copyright {
+  margin: 24px 0 0 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13px;
   font-weight: 600;
-  color: #17141d;
+  color: #234c38;
+  text-align: center;
   letter-spacing: 0.2px;
 }
 
-/* Floating View Switcher Toggle */
+/* ========================================================
+   Floating View Switcher Toggle
+   ======================================================== */
 .view-toggle-bar {
   position: fixed;
   bottom: 18px;
@@ -190,7 +351,7 @@
   z-index: 100;
   display: flex;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   padding: 5px;
@@ -204,8 +365,8 @@
   align-items: center;
   gap: 6px;
   padding: 7px 14px;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 13px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12.5px;
   font-weight: 600;
   color: #433c4a;
   background: transparent;
@@ -226,8 +387,15 @@
   box-shadow: 0 3px 10px rgba(167, 62, 201, 0.35);
 }
 
-/* Responsive adjustment for Mobile / Smaller Screens */
+/* ========================================================
+   Responsive Media Queries
+   ======================================================== */
 @media (max-width: 768px) {
+  .page-wrapper.wrapper-tablet-mode {
+    padding: 0;
+    background: transparent;
+  }
+
   .tablet-chassis.active {
     aspect-ratio: auto;
     border-radius: 0;
@@ -245,28 +413,9 @@
     min-height: 100vh;
   }
 
-  .brand-title {
-    font-size: 36px;
-  }
-
-  .brand-subtitle {
-    font-size: 16px;
-  }
-
-  .brand-services {
-    margin-top: 38px;
-  }
-
-  .services-line {
-    font-size: 17px;
-  }
-
-  .brand-slogan-container {
-    margin-top: 44px;
-  }
-
-  .brand-slogan {
-    font-size: 15.5px;
+  .login-card {
+    max-width: 340px;
+    padding: 24px 22px 20px;
   }
 
   .view-toggle-bar {
@@ -277,37 +426,29 @@
 
   .toggle-btn {
     padding: 6px 10px;
-    font-size: 12px;
+    font-size: 11.5px;
   }
 }
 
 @media (max-width: 480px) {
-  .login-content {
-    padding: 36px 18px;
+  .brand-header-title {
+    font-size: 24px;
   }
 
-  .brand-title {
-    font-size: 30px;
+  .brand-header-subtitle {
+    font-size: 13px;
   }
 
-  .brand-subtitle {
-    font-size: 14.5px;
+  .login-card {
+    max-width: 310px;
+    padding: 22px 18px 18px;
   }
 
-  .brand-services {
-    margin-top: 32px;
+  .login-card-title {
+    font-size: 22px;
   }
 
-  .services-line {
-    font-size: 14.5px;
-    line-height: 1.4;
-  }
-
-  .brand-slogan-container {
-    margin-top: 36px;
-  }
-
-  .brand-slogan {
-    font-size: 14px;
+  .login-field-box {
+    padding: 9px 12px;
   }
 }
