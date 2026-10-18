@@ -1,0 +1,746 @@
+/* ========================================================
+   Halaman Produk UD.ULFA - Sesuai 100% Mockup Desain Klien
+   ======================================================== */
+
+.product-content-body {
+  padding: 24px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header & Action Bar */
+.product-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-page-title {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.product-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Search Input Bar */
+.product-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 540px;
+  height: 40px;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  transition: border-color 0.18s ease;
+}
+
+.product-search-wrapper:focus-within {
+  border-color: #c841cb;
+  box-shadow: 0 0 0 3px rgba(200, 65, 203, 0.12);
+}
+
+.product-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.product-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  color: #111111;
+}
+
+.product-search-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Tambahkan Produk Button */
+.btn-add-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #c841cb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(200, 65, 203, 0.25);
+  transition: all 0.18s ease;
+}
+
+.btn-add-product:hover {
+  background: #b532b8;
+  transform: translateY(-1px);
+}
+
+.btn-add-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Category Filter Pills */
+.product-category-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.cat-pill-btn {
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1.8px solid #2d3748;
+  color: #111111;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.cat-pill-btn:hover {
+  background: #f8fafc;
+}
+
+.cat-pill-btn.active {
+  background: #c841cb;
+  border-color: #c841cb;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(200, 65, 203, 0.22);
+}
+
+/* Product Table Card Container */
+.product-table-card {
+  background: #ffffff;
+  border: 1.5px solid #d8b4e2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(77, 26, 76, 0.05);
+  margin-top: 4px;
+}
+
+.product-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Table Head */
+.product-table thead tr {
+  background: #ffffff;
+  border-bottom: 1.5px solid #cbd5e1;
+}
+
+.product-table thead th {
+  padding: 11px 14px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #111111;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.product-table thead th:last-child {
+  border-right: none;
+}
+
+.product-table thead th.col-no {
+  width: 48px;
+  text-align: center;
+}
+
+.product-table thead th.col-img {
+  width: 80px;
+  text-align: center;
+}
+
+.product-table thead th.col-stock {
+  width: 65px;
+  text-align: center;
+}
+
+.product-table thead th.col-action {
+  width: 95px;
+  text-align: center;
+  color: #13885d; /* Aksi text in green */
+}
+
+/* Table Body */
+.product-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.12s ease;
+}
+
+.product-table tbody tr:hover {
+  background: #fdfafd;
+}
+
+.product-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.product-table tbody td {
+  padding: 8px 14px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  vertical-align: middle;
+  border-right: 1px solid #e2e8f0;
+  color: #111111;
+}
+
+.product-table tbody td:last-child {
+  border-right: none;
+}
+
+/* Specific Cells */
+.col-no {
+  text-align: center;
+}
+
+.no-badge {
+  color: #13885d;
+  font-weight: 800;
+  font-size: 14.5px;
+}
+
+.col-img {
+  text-align: center;
+}
+
+.product-thumb-box {
+  width: 52px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.product-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.product-name-text {
+  font-weight: 600;
+  color: #111111;
+}
+
+.product-cat-text {
+  color: #2d3748;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.product-price-text {
+  font-weight: 700;
+  color: #111111;
+  white-space: nowrap;
+}
+
+.col-stock {
+  text-align: center;
+}
+
+.product-stock-text {
+  font-weight: 800;
+  font-size: 14.5px;
+  color: #111111;
+}
+
+/* Action Buttons */
+.col-action {
+  text-align: center;
+}
+
+.action-buttons-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-action-edit {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #c841cb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(200, 65, 203, 0.25);
+}
+
+.btn-action-edit:hover {
+  background: #b532b8;
+  transform: scale(1.05);
+}
+
+.btn-action-delete {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #de582e;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(222, 88, 46, 0.25);
+}
+
+.btn-action-delete:hover {
+  background: #c94921;
+  transform: scale(1.05);
+}
+
+.table-empty-cell {
+  text-align: center;
+  padding: 32px 14px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ========================================================
+   MODAL TAMBAHKAN PRODUK - SESUAI MOCKUP 100%
+   ======================================================== */
+.product-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 12, 22, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.product-modal-card {
+  width: 100%;
+  max-width: 730px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid #23584e;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+  box-sizing: border-box;
+  animation: modalZoomIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalZoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Header Bar */
+.modal-header-bar {
+  background: linear-gradient(150deg, #4d194c 0%, #683367 22%, #8e5c8d 48%, #af7faf 72%, #cb9dcb 88%, #deb2df 100%);
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.modal-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(0) invert(1);
+}
+
+.modal-brand-title {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.modal-header-date {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Modal Form Content Body */
+.modal-form-content {
+  padding: 22px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.modal-page-title {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* Grid Atas Form */
+.modal-top-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Upload Column */
+.modal-upload-col {
+  width: 100%;
+}
+
+.upload-drop-zone {
+  background: #fdf5fe;
+  border: 1.5px solid #ebd3ee;
+  border-radius: 16px;
+  height: 195px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.18s ease;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.upload-drop-zone:hover {
+  background: #fbf0fd;
+  border-color: #c841cb;
+  box-shadow: 0 4px 12px rgba(200, 65, 203, 0.12);
+}
+
+.upload-placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.upload-photo-icon {
+  color: #718096;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-main-text {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.upload-sub-text {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11.5px;
+  color: #888888;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.upload-preview-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.upload-change-tag {
+  position: absolute;
+  bottom: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.upload-file-hidden {
+  display: none;
+}
+
+/* Fields Column */
+.modal-fields-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-label {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #111111;
+}
+
+/* Inputs, Select, Textarea */
+.modal-input-green,
+.modal-select-green,
+.modal-textarea-green {
+  width: 100%;
+  border: 1.5px solid #23584e;
+  border-radius: 10px;
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13.5px;
+  color: #111111;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.modal-input-green:focus,
+.modal-select-green:focus,
+.modal-textarea-green:focus {
+  border-color: #13885d;
+  box-shadow: 0 0 0 3px rgba(19, 136, 93, 0.12);
+}
+
+.modal-input-green {
+  height: 40px;
+  padding: 0 14px;
+}
+
+.modal-input-green::placeholder,
+.modal-textarea-green::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Select */
+.modal-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.modal-select-green {
+  height: 40px;
+  padding: 0 36px 0 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.select-chevron-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inline Fields (Harga & Stok) */
+.modal-inline-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.inline-group {
+  width: 100%;
+}
+
+/* Price Input Prefix */
+.price-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.price-prefix {
+  position: absolute;
+  left: 12px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #4b5563;
+  pointer-events: none;
+}
+
+.modal-input-green.price-field {
+  padding-left: 38px;
+}
+
+/* Textarea */
+.modal-textarea-green {
+  padding: 10px 14px;
+  resize: vertical;
+  min-height: 85px;
+}
+
+.full-width-group {
+  width: 100%;
+}
+
+/* Error Text */
+.modal-field-error {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #dc2626;
+  margin-top: 2px;
+}
+
+.modal-input-green.is-invalid,
+.modal-select-green.is-invalid {
+  border-color: #dc2626;
+}
+
+/* Action Buttons (Batal & Simpan) */
+.modal-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.btn-modal-cancel {
+  background: #ffffff;
+  border: 1.8px solid #13885d;
+  color: #13885d;
+  border-radius: 10px;
+  padding: 8px 30px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-modal-cancel:hover {
+  background: #f0fdf4;
+}
+
+.btn-modal-submit {
+  background: linear-gradient(135deg, #582156 0%, #883985 55%, #ad5fad 100%);
+  border: none;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 9px 34px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(88, 33, 86, 0.28);
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-modal-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+

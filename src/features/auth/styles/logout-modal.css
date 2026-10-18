@@ -1,0 +1,127 @@
+/* =========================================================
+   LOGOUT CONFIRMATION SCREEN
+   Sesuai 100% dengan Background & Ornamen Gelombang Login
+========================================================= */
+
+.logout-screen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 9999;
+  background-color: #f0cff1;
+  background-image: url('/bg-waves.png');
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  animation: logoutFadeIn 0.2s ease-out;
+}
+
+/* Center Content */
+.logout-dialog-center {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  animation: logoutScaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logout-big-icon {
+  margin-bottom: 6px;
+  filter: drop-shadow(0 4px 10px rgba(130, 45, 140, 0.16));
+}
+
+.logout-confirm-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin: 0 0 6px 0;
+}
+
+.logout-confirm-subtitle {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 28px 0;
+}
+
+/* Action Buttons: Batal & Logout */
+.logout-confirm-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.logout-action-btn {
+  padding: 10px 48px;
+  min-width: 155px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+
+.logout-action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.logout-action-btn:active {
+  transform: translateY(1px);
+}
+
+.logout-action-btn.btn-cancel {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logout-action-btn.btn-cancel:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.logout-action-btn.btn-confirm {
+  background: linear-gradient(135deg, #4d1c4b 0%, #aa519b 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(77, 28, 75, 0.35);
+}
+
+.logout-action-btn.btn-confirm:hover {
+  box-shadow: 0 6px 20px rgba(77, 28, 75, 0.48);
+}
+
+@keyframes logoutFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoutScaleUp {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

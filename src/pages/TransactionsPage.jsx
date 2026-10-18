@@ -1,0 +1,136 @@
+import { useTransactions } from '../features/transactions/hooks/useTransactions.js'
+import DashboardSidebar from '../features/dashboard/components/DashboardSidebar.jsx'
+import DashboardTopBar from '../features/dashboard/components/DashboardTopBar.jsx'
+import TransactionHeader from '../features/transactions/components/TransactionHeader.jsx'
+import TransactionTable from '../features/transactions/components/TransactionTable.jsx'
+import TransactionPaymentForm from '../features/transactions/components/TransactionPaymentForm.jsx'
+import TransactionSummaryCard from '../features/transactions/components/TransactionSummaryCard.jsx'
+import TransactionReceiptModal from '../features/transactions/components/TransactionReceiptModal.jsx'
+import '../features/transactions/styles/transactions.css'
+import './DashboardPage.css'
+
+export default function TransactionsPage() {
+  // Sesuai React Coding SOP: Seluruh logic UI & state dihandle oleh custom hook useTransactions
+  const {
+    viewMode,
+    setViewMode,
+    activeMenu,
+    handleSelectMenu,
+    handleLogout,
+    cartItems,
+    totalDisplay,
+    customer,
+    setCustomer,
+    paymentMethod,
+    setPaymentMethod,
+    searchQuery,
+    setSearchQuery,
+    removeCartItem,
+    updateQuantity,
+    handleCheckout,
+    isSuccessModalOpen,
+    handleCloseSuccessModal,
+  } = useTransactions()
+
+  return (
+    <div className={`dash-wrapper ${viewMode === 'tablet' ? 'wrapper-tablet-mode' : ''}`}>
+      {/* Tablet Chassis Frame Shell */}
+      <div className={`tablet-chassis ${viewMode === 'tablet' ? 'active' : 'headless'}`}>
+        <div className="tablet-camera" aria-hidden="true" />
+        <div className="tablet-speaker" aria-hidden="true" />
+
+        {/* Layar Tablet */}
+        <div className="dash-screen">
+          {/* 1. Sidebar Navigasi Kiri (Dipertahankan identik sesuai permintaan user) */}
+          <DashboardSidebar
+            activeMenu={activeMenu}
+            onSelectMenu={handleSelectMenu}
+            onLogout={handleLogout}
+          />
+
+          {/* 2. Area Konten Utama Kanan */}
+          <section className="dash-main">
+            {/* Top Bar (Slogan & Tanggal) */}
+            <DashboardTopBar
+              slogan="“Akan melayani dengan sepenuh hati”"
+              date="Kamis, 1 Okt 2026"
+            />
+
+            {/* Konten Halaman Transaksi Penjualan */}
+            <div className="dash-content-body trx-content-body">
+              {/* Header Judul, Pencarian, & Tombol Tambah */}
+              <TransactionHeader
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                onAddClick={() => {
+                  // Default action: alert atau shortcut tambah item cepat
+                  alert('Silakan pilih produk dari halaman Produk atau masukkan nama produk pada kolom pencarian.')
+                }}
+              />
+
+              {/* Tabel Daftar Belanja Transaksi */}
+              <TransactionTable
+                items={cartItems}
+                onDeleteItem={removeCartItem}
+                onUpdateQuantity={updateQuantity}
+              />
+
+              {/* Bagian Bawah: Form Pelanggan & Metode Pembayaran + Ringkasan Total */}
+              <div className="trx-bottom-section">
+                <TransactionPaymentForm
+                  customer={customer}
+                  onCustomerChange={setCustomer}
+                  paymentMethod={paymentMethod}
+                  onPaymentMethodChange={setPaymentMethod}
+                />
+
+                <TransactionSummaryCard
+                  totalDisplay={totalDisplay}
+                  onCheckout={handleCheckout}
+                  isDisabled={cartItems.length === 0}
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* 3. Modal Struk Transaksi / Sukses Pembayaran */}
+          <TransactionReceiptModal
+            isOpen={isSuccessModalOpen}
+            onClose={handleCloseSuccessModal}
+            cartItems={cartItems}
+            totalDisplay={totalDisplay}
+            customer={customer}
+            paymentMethod={paymentMethod}
+          />
+        </div>
+      </div>
+
+      {/* Floating View Switcher Toggle */}
+      <div className="view-toggle-bar">
+        <button
+          type="button"
+          className={`toggle-btn ${viewMode === 'tablet' ? 'active' : ''}`}
+          onClick={() => setViewMode('tablet')}
+          title="Tampilan Mockup Tablet"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+            <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2.5" />
+          </svg>
+          <span>Mockup Tablet</span>
+        </button>
+        <button
+          type="button"
+          className={`toggle-btn ${viewMode === 'fullscreen' ? 'active' : ''}`}
+          onClick={() => setViewMode('fullscreen')}
+          title="Tampilan Layar Penuh"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+          </svg>
+          <span>Layar Penuh</span>
+        </button>
+      </div>
+    </div>
+  )
+}

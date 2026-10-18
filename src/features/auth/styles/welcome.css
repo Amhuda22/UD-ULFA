@@ -1,0 +1,313 @@
+/* ========================================================
+   Halaman Awal UD.ULFA - 100% Sesuai Desain Asli Referensi Klien
+   ======================================================== */
+
+.welcome-page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0ceee;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Tablet Mode Background */
+.welcome-page-wrapper.wrapper-tablet-mode {
+  background-color: #1e1a24;
+  background-image: radial-gradient(circle at 50% 50%, #2e2637 0%, #17131c 100%);
+  padding: 40px 20px 80px;
+}
+
+/* Tablet Chassis Frame */
+.welcome-tablet-chassis {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.welcome-tablet-chassis.active {
+  max-width: 960px;
+  width: 100%;
+  aspect-ratio: 16 / 10.8;
+  background: #0d0b10;
+  border-radius: 34px;
+  padding: 14px 18px;
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 0 2px #26212e;
+}
+
+/* Tablet Bezel Camera Notch */
+.welcome-tablet-camera {
+  display: none;
+}
+
+.welcome-tablet-chassis.active .welcome-tablet-camera {
+  display: block;
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 38px;
+  background: #1f1b26;
+  border-radius: 4px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8);
+  z-index: 20;
+}
+
+/* Layar / Screen Container */
+.welcome-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebd0ef;
+  background-image: url('/bg-waves.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.welcome-tablet-chassis.active .welcome-screen {
+  min-height: auto;
+  height: 100%;
+  border-radius: 22px;
+  background-size: 100% 100%;
+}
+
+/* Center Content */
+.welcome-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 780px;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Logo Storefront */
+.welcome-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: transform 0.25s ease;
+}
+
+.welcome-icon-wrapper:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.welcome-logo-img {
+  display: block;
+  width: 92px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+/* Brand Name */
+.welcome-brand-title {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #0b090e;
+  line-height: 1.15;
+}
+
+/* Subtitle */
+.welcome-brand-subtitle {
+  margin: 4px 0 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b090e;
+  letter-spacing: 0.1px;
+}
+
+/* Services / Categories */
+.welcome-brand-services {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-services-line {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: #0b090e;
+  letter-spacing: 0.5px;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Slogan Serif */
+.welcome-slogan-container {
+  margin-top: 58px;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-slogan {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b090e;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+/* Floating View Switcher Toggle */
+.welcome-view-toggle-bar {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 100;
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(186, 71, 217, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.welcome-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #433c4a;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.welcome-toggle-btn:hover {
+  color: #8f26a8;
+  background: rgba(186, 71, 217, 0.08);
+}
+
+.welcome-toggle-btn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #a73ec9, #8426a8);
+  box-shadow: 0 3px 10px rgba(167, 62, 201, 0.35);
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .welcome-tablet-chassis.active {
+    aspect-ratio: auto;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .welcome-tablet-chassis.active .welcome-tablet-camera {
+    display: none;
+  }
+
+  .welcome-tablet-chassis.active .welcome-screen {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .welcome-brand-title {
+    font-size: 36px;
+  }
+
+  .welcome-brand-subtitle {
+    font-size: 16px;
+  }
+
+  .welcome-brand-services {
+    margin-top: 38px;
+  }
+
+  .welcome-services-line {
+    font-size: 17px;
+  }
+
+  .welcome-slogan-container {
+    margin-top: 44px;
+  }
+
+  .welcome-slogan {
+    font-size: 15.5px;
+  }
+
+  .welcome-view-toggle-bar {
+    bottom: 12px;
+    right: 12px;
+    padding: 4px;
+  }
+
+  .welcome-toggle-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-content {
+    padding: 36px 18px;
+  }
+
+  .welcome-brand-title {
+    font-size: 30px;
+  }
+
+  .welcome-brand-subtitle {
+    font-size: 14.5px;
+  }
+
+  .welcome-brand-services {
+    margin-top: 32px;
+  }
+
+  .welcome-services-line {
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+
+  .welcome-slogan-container {
+    margin-top: 36px;
+  }
+
+  .welcome-slogan {
+    font-size: 14px;
+  }
+}

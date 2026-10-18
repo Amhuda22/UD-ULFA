@@ -1,0 +1,574 @@
+/* ========================================================
+   Halaman Dashboard UD.ULFA - Sesuai 100% Mockup Desain Klien
+   ======================================================== */
+
+.dash-wrapper {
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #deb7e1;
+  background-image: radial-gradient(ellipse at 80% 20%, #f1daf3 0%, #ddb7e2 45%, #ca9ccf 100%);
+  transition: background 0.3s ease;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Tablet Frame Shell Mode (Default Sesuai Mockup Desain) */
+.dash-wrapper.wrapper-tablet-mode {
+  background-color: #1a1622;
+  background-image: radial-gradient(circle at 50% 50%, #2b2336 0%, #130f1a 100%);
+  padding: 24px 20px 60px;
+}
+
+/* Tablet Chassis Container */
+.tablet-chassis {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Tablet Screen Container */
+.dash-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  background: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.tablet-chassis.active .dash-screen {
+  min-height: auto;
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* ========================================================
+   SIDEBAR NAVIGASI KIRI (PURPLE / PLUM)
+   ======================================================== */
+.dash-sidebar {
+  width: 215px;
+  flex-shrink: 0;
+  background: linear-gradient(150deg, #4d194c 0%, #683367 22%, #8e5c8d 48%, #af7faf 72%, #cb9dcb 88%, #deb2df 100%);
+  padding: 30px 10px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: #ffffff;
+  user-select: none;
+}
+
+/* Sidebar Brand Header */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 0 40px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+.sidebar-brand-title {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 27px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Sidebar Navigation Items */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0;
+  flex: 1;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-nav-item.active {
+  background: rgba(255, 255, 255, 0.26);
+  font-weight: 400;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 29px;
+  height: 29px;
+  color: #ffffff;
+}
+
+.nav-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-label {
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+/* Sidebar Footer / Logout */
+.sidebar-footer {
+  padding-top: 15px;
+  border-top: none;
+}
+
+.sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.sidebar-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================================
+   AREA KONTEN UTAMA (KANAN)
+   ======================================================== */
+.dash-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  overflow: hidden;
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Top Bar: Slogan Serif & Tanggal */
+.dash-top-bar {
+  background: #edd3ef;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.top-slogan {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0b090e;
+  letter-spacing: 0.1px;
+}
+
+.top-date {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b090e;
+  letter-spacing: -0.2px;
+}
+
+/* Body Container */
+.dash-content-body {
+  padding: 10px 28px 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Greeting Section */
+.dash-greeting-box {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.dash-page-title {
+  margin: 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 29px;
+  font-weight: 800;
+  color: #050407;
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+}
+
+.dash-page-subtitle {
+  margin: 2px 0 0 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f1b24;
+}
+
+/* ========================================================
+   4 KPI SUMMARY CARDS (2x2 GRID)
+   ======================================================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.kpi-card {
+  background: #f1f3f5;
+  border-radius: 14px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+
+.kpi-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.kpi-icon-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background: #e3f3e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.kpi-title {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #0b090e;
+  letter-spacing: -0.1px;
+}
+
+.kpi-num {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: #050407;
+  line-height: 1.15;
+  margin: 2px 0 1px;
+  letter-spacing: -0.3px;
+}
+
+.kpi-subtext {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.kpi-subtext.cyan {
+  color: #3ca2a4;
+}
+
+/* ========================================================
+   LOWER SECTION: KATEGORI PRODUK & GRAFIK PENJUALAN
+   ======================================================== */
+.dash-lower-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* Bagian Kiri: Kategori Produk */
+.cat-section {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.cat-section-heading {
+  margin: 0 0 8px 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #050407;
+  letter-spacing: -0.2px;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.cat-card {
+  background: #f1f3f5;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-1px);
+  background-color: #eaf1ee;
+}
+
+.cat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #e3f3e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+}
+
+.cat-name {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13px;
+  font-weight: 800;
+  color: #050407;
+  line-height: 1.25;
+}
+
+.cat-link {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  color: #3ca2a4;
+  text-decoration: none;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.cat-link:hover {
+  color: #177f81;
+  text-decoration: underline;
+}
+
+/* Bagian Kanan: Grafik Penjualan */
+.chart-card {
+  background: #f1f3f5;
+  border-radius: 14px;
+  padding: 10px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.chart-title {
+  margin: 0 0 6px 0;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 17px;
+  font-weight: 800;
+  color: #050407;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+.chart-svg-container {
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+}
+
+.sales-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.chart-axis-label {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 8px;
+  fill: #1c4731;
+  font-weight: 700;
+}
+
+.chart-day-label {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 8.5px;
+  fill: #1c4731;
+  font-weight: 700;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ======================================================== */
+@media (max-width: 768px) {
+  .dash-wrapper.wrapper-tablet-mode {
+    padding: 0;
+    background: transparent;
+  }
+
+  .tablet-chassis.active {
+    aspect-ratio: auto;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .tablet-chassis.active .tablet-camera {
+    display: none;
+  }
+
+  .tablet-chassis.active .dash-screen {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .dash-sidebar {
+    width: 180px;
+    padding: 16px 10px;
+  }
+
+  .sidebar-brand-title {
+    font-size: 18px;
+  }
+
+  .sidebar-nav-item {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .dash-content-body {
+    padding: 12px 14px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .dash-lower-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 580px) {
+  .dash-screen {
+    flex-direction: column;
+  }
+
+  .dash-sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 14px;
+  }
+
+  .sidebar-brand {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .sidebar-footer {
+    padding-top: 0;
+    border-top: none;
+    margin-left: auto;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
+}
