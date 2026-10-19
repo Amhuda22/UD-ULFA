@@ -1,8 +1,8 @@
 export default function DashboardKpiGrid({
-  totalProduk = '345',
-  stokMenipis = '12',
-  transaksiHariIni = '35',
-  pendapatanHariIni = '9.678.000',
+  totalProduk = '0',
+  stokMenipis = '0',
+  transaksiHariIni = '0',
+  pendapatanHariIni = 'Rp. 0',
 }) {
   return (
     <div className="kpi-grid">
@@ -18,7 +18,7 @@ export default function DashboardKpiGrid({
         <div className="kpi-data">
           <span className="kpi-title">Total Produk</span>
           <span className="kpi-num">{totalProduk}</span>
-          <span className="kpi-subtext cyan">+5 Produk Baru</span>
+          <span className="kpi-subtext cyan">0 Produk Baru</span>
         </div>
       </div>
 
@@ -34,7 +34,7 @@ export default function DashboardKpiGrid({
         <div className="kpi-data">
           <span className="kpi-title">Stok Menipis</span>
           <span className="kpi-num">{stokMenipis}</span>
-          <span className="kpi-subtext cyan">Produk Perlu Di Perhatikan</span>
+          <span className="kpi-subtext cyan">0 Produk</span>
         </div>
       </div>
 

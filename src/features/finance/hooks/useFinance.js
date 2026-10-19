@@ -2,12 +2,14 @@ import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../auth/stores/useAuthStore.js'
 import { useFinanceStore, financeKpiData } from '../stores/useFinanceStore.js'
+import { useViewModeStore } from '../../../shared/stores/useViewModeStore.js'
 
 export function useFinance() {
   const navigate = useNavigate()
   const logout = useAuthStore((state) => state.logout)
 
-  const [viewMode, setViewMode] = useState('tablet')
+  const viewMode = useViewModeStore((state) => state.viewMode)
+  const setViewMode = useViewModeStore((state) => state.setViewMode)
   const [activeMenu, setActiveMenu] = useState('keuangan')
 
   // Store state

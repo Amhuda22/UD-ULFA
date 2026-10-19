@@ -3,13 +3,15 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuthStore } from '../stores/useAuthStore.js'
 import { authService } from '../services/authService.js'
 import { loginSchema } from '../schemas/loginSchema.js'
+import { useViewModeStore } from '../../../shared/stores/useViewModeStore.js'
 
 export function useLoginForm() {
   const navigate = useNavigate()
   const location = useLocation()
   const setUser = useAuthStore((state) => state.setUser)
 
-  const [viewMode, setViewMode] = useState('tablet')
+  const viewMode = useViewModeStore((state) => state.viewMode)
+  const setViewMode = useViewModeStore((state) => state.setViewMode)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)

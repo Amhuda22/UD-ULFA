@@ -3,12 +3,15 @@
    ======================================================== */
 
 .product-content-body {
-  padding: 24px 28px 36px;
+  padding: 14px 28px 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   box-sizing: border-box;
   width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Header & Action Bar */
@@ -42,7 +45,7 @@
   gap: 10px;
   flex: 1;
   max-width: 540px;
-  height: 40px;
+  height: 35px;
   background: #ffffff;
   border: 1.5px solid #d1d5db;
   border-radius: 8px;
@@ -83,12 +86,15 @@
 .btn-add-product {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  height: 35px;
+  box-sizing: border-box;
   background: #c841cb;
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 9px 18px;
+  padding: 0 18px;
   font-family: var(--font-primary, "Poppins", sans-serif);
   font-size: 13.5px;
   font-weight: 700;
@@ -113,21 +119,29 @@
 .product-category-pills {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 10px;
   margin-top: 2px;
+  box-sizing: border-box;
 }
 
 .cat-pill-btn {
-  padding: 6px 18px;
+  flex: 1;
+  height: 35px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
   border-radius: 8px;
   font-family: var(--font-primary, "Poppins", sans-serif);
   font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   background: #ffffff;
-  border: 1.8px solid #2d3748;
+  border: 1.5px solid #d1d5db;
   color: #111111;
+  white-space: nowrap;
   transition: all 0.18s ease;
   user-select: none;
 }
@@ -145,39 +159,114 @@
 
 /* Product Table Card Container */
 .product-table-card {
+  position: relative;
   background: #ffffff;
-  border: 1.5px solid #d8b4e2;
+  border: 1.5px solid #e2e8f0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(77, 26, 76, 0.05);
-  margin-top: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  margin-top: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full width header background extending into the scrollbar corner */
+.product-table-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  background: #f7e8f8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Full width table header divider line extending across scrollbar to right border */
+.product-table-card::after {
+  content: "";
+  position: absolute;
+  top: 33.5px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #e2e8f0;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .product-table-scroll {
   width: 100%;
+  flex: 1;
+  min-height: 0;
   overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar 3px Rapi & Konsisten dengan Warna Brand UD ULFA */
+.product-table-scroll::-webkit-scrollbar {
+  width: 3px !important;
+  height: 3px !important;
+}
+
+.product-table-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+  border-radius: 999px !important;
+  margin-top: 35px !important;
+}
+
+.product-table-scroll::-webkit-scrollbar-track:vertical {
+  margin-top: 35px !important;
+}
+
+.product-table-scroll::-webkit-scrollbar-track:horizontal {
+  margin-top: 0 !important;
+}
+
+.product-table-scroll::-webkit-scrollbar-thumb {
+  background: #c841cb !important;
+  border-radius: 999px !important;
+}
+
+.product-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a82fa9 !important;
 }
 
 .product-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   text-align: left;
 }
 
-/* Table Head */
+/* Table Head Sticky */
 .product-table thead tr {
-  background: #ffffff;
-  border-bottom: 1.5px solid #cbd5e1;
+  background: #f7e8f8;
 }
 
 .product-table thead th {
-  padding: 11px 14px;
+  position: sticky;
+  top: 0;
+  background: #f7e8f8;
+  padding: 7px 14px;
+  line-height: 18px;
+  height: 35px;
+  box-sizing: border-box;
   font-family: var(--font-primary, "Poppins", sans-serif);
   font-size: 13.5px;
   font-weight: 800;
   color: #111111;
+  text-align: center;
+  vertical-align: middle;
   border-right: 1px solid #e2e8f0;
+  border-bottom: 1.5px solid #e2e8f0;
   white-space: nowrap;
+  z-index: 3;
 }
 
 .product-table thead th:last-child {
@@ -200,23 +289,18 @@
 }
 
 .product-table thead th.col-action {
-  width: 95px;
+  width: 100px;
   text-align: center;
-  color: #13885d; /* Aksi text in green */
+  color: #111111;
 }
 
 /* Table Body */
 .product-table tbody tr {
-  border-bottom: 1px solid #e2e8f0;
   transition: background 0.12s ease;
 }
 
 .product-table tbody tr:hover {
   background: #fdfafd;
-}
-
-.product-table tbody tr:last-child {
-  border-bottom: none;
 }
 
 .product-table tbody td {
@@ -225,11 +309,16 @@
   font-size: 13.5px;
   vertical-align: middle;
   border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   color: #111111;
 }
 
 .product-table tbody td:last-child {
   border-right: none;
+}
+
+.product-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 /* Specific Cells */
@@ -238,7 +327,7 @@
 }
 
 .no-badge {
-  color: #13885d;
+  color: #111111;
   font-weight: 800;
   font-size: 14.5px;
 }

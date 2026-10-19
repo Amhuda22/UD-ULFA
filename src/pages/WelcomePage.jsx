@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import StoreLogo from '../features/auth/components/StoreLogo.jsx'
+import { useViewModeStore } from '../shared/stores/useViewModeStore.js'
 import '../features/auth/styles/welcome.css'
 
 export default function WelcomePage() {
   const navigate = useNavigate()
-  const [viewMode, setViewMode] = useState('tablet')
+  const viewMode = useViewModeStore((state) => state.viewMode)
+  const setViewMode = useViewModeStore((state) => state.setViewMode)
 
   return (
     <div className={`welcome-page-wrapper ${viewMode === 'tablet' ? 'wrapper-tablet-mode' : ''}`}>

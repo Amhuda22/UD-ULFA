@@ -53,12 +53,12 @@ export default function DashboardPage() {
                 </p>
               </div>
 
-              {/* 4 Kartu Ringkasan KPI (Grid 2x2) */}
+              {/* 4 Kartu Ringkasan KPI (Grid 2x2) - Data Dikosongkan */}
               <DashboardKpiGrid
-                totalProduk="345"
-                stokMenipis="12"
-                transaksiHariIni="35"
-                pendapatanHariIni="9.678.000"
+                totalProduk="0"
+                stokMenipis="0"
+                transaksiHariIni="0"
+                pendapatanHariIni="Rp. 0"
               />
 
               {/* Layout Bawah: Kategori Produk & Grafik Penjualan */}

@@ -2,12 +2,14 @@ import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../auth/stores/useAuthStore.js'
 import { useTransactionStore } from '../stores/useTransactionStore.js'
+import { useViewModeStore } from '../../../shared/stores/useViewModeStore.js'
 
 export function useTransactions() {
   const navigate = useNavigate()
   const logout = useAuthStore((state) => state.logout)
 
-  const [viewMode, setViewMode] = useState('tablet')
+  const viewMode = useViewModeStore((state) => state.viewMode)
+  const setViewMode = useViewModeStore((state) => state.setViewMode)
   const [activeMenu, setActiveMenu] = useState('transaksi')
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
 

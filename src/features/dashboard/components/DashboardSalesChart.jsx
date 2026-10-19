@@ -12,16 +12,15 @@ export default function DashboardSalesChart() {
     { label: '0', y: 148 },
   ]
 
-  // Data 7 hari dan titik tren penjualan sesuai screenshot
-  // Sen (0) -> Sel (5) -> Rab (10) -> Kam (5) -> Jum (15) -> sab (10) -> Min (25)
+  // Data 7 hari penjualan seluruhnya 0 (kosong di baseline y=148)
   const daysData = [
     { day: 'Sen', x: 30, y: 148 },
-    { day: 'Sel', x: 67, y: 130 },
-    { day: 'Rab', x: 104, y: 112 },
-    { day: 'Kam', x: 141, y: 130 },
-    { day: 'Jum', x: 178, y: 94 },
-    { day: 'sab', x: 215, y: 112 },
-    { day: 'Min', x: 252, y: 58 },
+    { day: 'Sel', x: 67, y: 148 },
+    { day: 'Rab', x: 104, y: 148 },
+    { day: 'Kam', x: 141, y: 148 },
+    { day: 'Jum', x: 178, y: 148 },
+    { day: 'sab', x: 215, y: 148 },
+    { day: 'Min', x: 252, y: 148 },
   ]
 
   const polylineStr = daysData.map((d) => `${d.x},${d.y}`).join(' ')

@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../auth/stores/useAuthStore.js'
 import { useSettingsStore } from '../stores/useSettingsStore.js'
+import { useViewModeStore } from '../../../shared/stores/useViewModeStore.js'
 
 export function useSettings() {
   const navigate = useNavigate()
   const logout = useAuthStore((state) => state.logout)
 
-  const [viewMode, setViewMode] = useState('tablet')
+  const viewMode = useViewModeStore((state) => state.viewMode)
+  const setViewMode = useViewModeStore((state) => state.setViewMode)
   const [activeMenu, setActiveMenu] = useState('pengaturan')
   const [successToast, setSuccessToast] = useState(null)
 
