@@ -10,15 +10,11 @@ export default function DashboardCategoryGrid() {
             <img
               src="/icon-kategori-atk.png"
               alt="Alat Tulis Kerja"
-              style={{ width: '34px', height: '34px', objectFit: 'contain', display: 'block' }}
+              className="cat-icon-img"
             />
           </div>
           <div className="cat-info">
-            <span className="cat-name">
-              Alat Tulis
-              <br />
-              Kerja
-            </span>
+            <span className="cat-name">Alat Tulis Kerja</span>
             <a href="#produk" className="cat-link">Lihat Produk &gt;</a>
           </div>
         </div>
@@ -29,15 +25,11 @@ export default function DashboardCategoryGrid() {
             <img
               src="/icon-kategori-kematian.png"
               alt="Peralatan Kematian"
-              style={{ width: '34px', height: '34px', objectFit: 'contain', display: 'block' }}
+              className="cat-icon-img"
             />
           </div>
           <div className="cat-info">
-            <span className="cat-name">
-              Peralatan Ke-
-              <br />
-              matian
-            </span>
+            <span className="cat-name">Peralatan Kematian</span>
             <a href="#produk" className="cat-link">Lihat Produk &gt;</a>
           </div>
         </div>
@@ -48,15 +40,11 @@ export default function DashboardCategoryGrid() {
             <img
               src="/icon-kategori-sekolah.png"
               alt="Perlengkapan Sekolah"
-              style={{ width: '34px', height: '34px', objectFit: 'contain', display: 'block' }}
+              className="cat-icon-img"
             />
           </div>
           <div className="cat-info">
-            <span className="cat-name">
-              Perlengka-
-              <br />
-              pan Sekolah
-            </span>
+            <span className="cat-name">Perlengkapan Sekolah</span>
             <a href="#produk" className="cat-link">Lihat Produk &gt;</a>
           </div>
         </div>
@@ -67,15 +55,11 @@ export default function DashboardCategoryGrid() {
             <img
               src="/icon-kategori-tambah.png"
               alt="Tambahkan Produk"
-              style={{ width: '34px', height: '34px', objectFit: 'contain', display: 'block' }}
+              className="cat-icon-img"
             />
           </div>
           <div className="cat-info">
-            <span className="cat-name">
-              Tambahk-
-              <br />
-              an Produk
-            </span>
+            <span className="cat-name">Tambahkan Produk</span>
             <a href="#tambah" className="cat-link">Tambahkan &gt;</a>
           </div>
         </div>

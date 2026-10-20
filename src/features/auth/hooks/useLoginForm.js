@@ -39,6 +39,8 @@ export function useLoginForm() {
         setTimeout(() => {
           navigate(destination, { replace: true })
         }, 400)
+      } else {
+        setFeedback({ type: 'error', text: res.message || 'Username atau pasword salah.' })
       }
     } catch {
       setFeedback({ type: 'error', text: 'Terjadi kesalahan sistem saat login.' })

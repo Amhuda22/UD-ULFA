@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export const initialFinanceTransactions = [
   {
     id: 1,
-    date: '01-10-2026',
+    date: '18-10-2026',
     description: 'Penjualan',
     income: 'Rp 1.250.000',
     expense: '-',
@@ -11,7 +11,7 @@ export const initialFinanceTransactions = [
   },
   {
     id: 2,
-    date: '02-10-2026',
+    date: '19-10-2026',
     description: 'Pembelian Stok',
     income: '-',
     expense: 'Rp 500.000',
@@ -19,7 +19,7 @@ export const initialFinanceTransactions = [
   },
   {
     id: 3,
-    date: '03-10-2026',
+    date: '20-10-2026',
     description: 'Penjualan',
     income: 'Rp 900.000',
     expense: '-',
@@ -50,7 +50,7 @@ export const financeKpiData = {
 
 export const useFinanceStore = create((set) => ({
   periodTab: 'Mingguan', // 'Mingguan' | 'Bulanan' | 'Tahunan'
-  selectedPeriod: '01-05 Oktober 2026',
+  selectedPeriod: '20-26 Oktober 2026',
   transactions: initialFinanceTransactions,
 
   setPeriodTab: (tab) =>

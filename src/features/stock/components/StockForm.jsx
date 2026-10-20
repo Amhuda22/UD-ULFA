@@ -1,3 +1,5 @@
+import { getCurrentDateString } from '../../../shared/utils/dateUtils.js'
+
 export default function StockForm({
   activeTab,
   onTabChange,
@@ -62,7 +64,7 @@ export default function StockForm({
               className="stock-input with-icon"
               value={form.date}
               onChange={(e) => onFormChange('date', e.target.value)}
-              placeholder="01-10-2026"
+              placeholder={getCurrentDateString()}
             />
           </div>
         </div>

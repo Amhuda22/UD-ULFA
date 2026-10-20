@@ -50,10 +50,9 @@ export default function TransactionsPage() {
 
           {/* 2. Area Konten Utama Kanan */}
           <section className="dash-main">
-            {/* Top Bar (Slogan & Tanggal) */}
+            {/* Top Bar (Slogan & Tanggal Dinamis Hari Ini) */}
             <DashboardTopBar
               slogan="“Akan melayani dengan sepenuh hati”"
-              date="Kamis, 1 Okt 2026"
             />
 
             {/* Konten Halaman Transaksi Penjualan */}

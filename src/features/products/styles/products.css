@@ -23,7 +23,7 @@
 
 .product-page-title {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   color: #111111;
   margin: 0;
@@ -471,14 +471,18 @@
 }
 
 .product-modal-card {
-  width: 100%;
-  max-width: 730px;
+  width: min(920px, 88vw);
+  max-width: 920px;
+  height: 550px;
+  max-height: 90vh;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1.5px solid #23584e;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+  border: 1.5px solid #111111;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   animation: modalZoomIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -496,13 +500,14 @@
 /* Modal Header Bar */
 .modal-header-bar {
   background: linear-gradient(150deg, #4d194c 0%, #683367 22%, #8e5c8d 48%, #af7faf 72%, #cb9dcb 88%, #deb2df 100%);
-  padding: 10px 22px;
+  padding: 12px 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
   box-sizing: border-box;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .modal-header-brand {
@@ -535,41 +540,51 @@
 
 /* Modal Form Content Body */
 .modal-form-content {
-  padding: 22px 28px 24px;
+  flex: 1;
+  min-height: 0;
+  padding: 12px 32px 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .modal-page-title {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   color: #111111;
-  margin: 0;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
   letter-spacing: -0.3px;
 }
 
-/* Grid Atas Form */
+/* Grid Atas Form (Kotak foto & form sejajar ke kanan dinaikkan rapat 5px dari teks) */
 .modal-top-grid {
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
+  margin-bottom: 12px;
 }
 
 /* Upload Column */
 .modal-upload-col {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .upload-drop-zone {
-  background: #fdf5fe;
-  border: 1.5px solid #ebd3ee;
-  border-radius: 16px;
-  height: 195px;
+  background: #fbf2fb;
+  border: 1.5px solid #111111;
+  border-radius: 14px;
+  width: 100%;
+  height: 100%;
+  flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -582,9 +597,9 @@
 }
 
 .upload-drop-zone:hover {
-  background: #fbf0fd;
-  border-color: #c841cb;
-  box-shadow: 0 4px 12px rgba(200, 65, 203, 0.12);
+  background: #f9eaf9;
+  border-color: #111111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .upload-placeholder-content {
@@ -592,7 +607,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 14px;
 }
 
 .upload-photo-icon {
@@ -603,19 +618,29 @@
   justify-content: center;
 }
 
+.upload-icon-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
 .upload-main-text {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 14.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
   color: #111111;
+  line-height: 1.2;
 }
 
 .upload-sub-text {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 11.5px;
+  font-size: 12px;
   color: #888888;
   font-style: italic;
-  margin-top: 2px;
+  margin-top: 3px;
+  line-height: 1.2;
 }
 
 .upload-preview-wrapper {
@@ -652,7 +677,8 @@
 .modal-fields-col {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
+  height: 100%;
 }
 
 .modal-field-group {
@@ -664,8 +690,10 @@
 .modal-label {
   font-family: var(--font-primary, "Poppins", sans-serif);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #111111;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* Inputs, Select, Textarea */
@@ -673,8 +701,8 @@
 .modal-select-green,
 .modal-textarea-green {
   width: 100%;
-  border: 1.5px solid #23584e;
-  border-radius: 10px;
+  border: 1.5px solid #111111;
+  border-radius: 12px;
   background: #ffffff;
   box-sizing: border-box;
   font-family: var(--font-primary, "Poppins", sans-serif);
@@ -687,13 +715,25 @@
 .modal-input-green:focus,
 .modal-select-green:focus,
 .modal-textarea-green:focus {
-  border-color: #13885d;
-  box-shadow: 0 0 0 3px rgba(19, 136, 93, 0.12);
+  border-color: #111111;
+  box-shadow: 0 0 0 2.5px rgba(0, 0, 0, 0.08);
 }
 
 .modal-input-green {
-  height: 40px;
+  height: 45px;
   padding: 0 14px;
+}
+
+/* Hilangkan spinner panah naik-turun pada input number (Stok) */
+.modal-input-green[type="number"]::-webkit-inner-spin-button,
+.modal-input-green[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal-input-green[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .modal-input-green::placeholder,
@@ -709,7 +749,7 @@
 }
 
 .modal-select-green {
-  height: 40px;
+  height: 45px;
   padding: 0 36px 0 14px;
   appearance: none;
   -webkit-appearance: none;
@@ -739,37 +779,73 @@
   width: 100%;
 }
 
-/* Price Input Prefix */
+/* Price Input Prefix (Sesuai referensi gambar: kotak abu-abu di dalam border hitam) */
 .price-input-wrapper {
-  position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
+  height: 45px;
+  border: 1.5px solid #111111;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.price-input-wrapper:focus-within {
+  border-color: #111111;
+  box-shadow: 0 0 0 2.5px rgba(0, 0, 0, 0.08);
+}
+
+.price-input-wrapper.is-invalid {
+  border-color: #dc2626;
 }
 
 .price-prefix {
-  position: absolute;
-  left: 12px;
+  background: #ebebeb;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 14px;
-  font-weight: 700;
-  color: #4b5563;
-  pointer-events: none;
+  font-size: 15px;
+  font-weight: 800;
+  color: #52525b;
+  user-select: none;
+  border-right: none;
+  flex-shrink: 0;
 }
 
-.modal-input-green.price-field {
-  padding-left: 38px;
+.price-input-wrapper .modal-input-green.price-field {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+  background: transparent;
 }
 
-/* Textarea */
+/* Textarea (Otomatis membesar mengisi seluruh ruang kosong yang ada) */
 .modal-textarea-green {
+  flex: 1;
+  width: 100%;
   padding: 10px 14px;
-  resize: vertical;
-  min-height: 85px;
+  resize: none;
+  min-height: 80px;
+  box-sizing: border-box;
 }
 
 .full-width-group {
+  flex: 1;
+  min-height: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
 }
 
 /* Error Text */
@@ -792,37 +868,46 @@
   align-items: center;
   justify-content: flex-end;
   gap: 14px;
-  margin-top: 4px;
+  margin-top: 0;
+  flex-shrink: 0;
 }
 
 .btn-modal-cancel {
   background: #ffffff;
-  border: 1.8px solid #13885d;
-  color: #13885d;
-  border-radius: 10px;
-  padding: 8px 30px;
+  border: 1.8px solid #111111;
+  color: #111111;
+  border-radius: 9px;
+  height: 40px;
+  padding: 0 28px;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.15s ease;
   user-select: none;
 }
 
 .btn-modal-cancel:hover {
-  background: #f0fdf4;
+  background: #f3f4f6;
 }
 
 .btn-modal-submit {
   background: linear-gradient(135deg, #582156 0%, #883985 55%, #ad5fad 100%);
   border: none;
   color: #ffffff;
-  border-radius: 10px;
-  padding: 9px 34px;
+  border-radius: 9px;
+  height: 40px;
+  padding: 0 32px;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 3px 10px rgba(88, 33, 86, 0.28);
   transition: all 0.15s ease;
   user-select: none;
@@ -831,5 +916,232 @@
 .btn-modal-submit:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
+}
+
+/* ========================================================
+   MODAL DI DALAM MOCKUP TABLET (KOMPAK SESUAI FRAME TABLET)
+   ======================================================== */
+.tablet-chassis.active .product-modal-card {
+  width: min(580px, 94%);
+  max-width: 580px;
+  height: 400px;
+  max-height: 94%;
+  border-radius: 14px;
+}
+
+.tablet-chassis.active .modal-header-bar {
+  padding: 7px 16px;
+}
+
+.tablet-chassis.active .modal-brand-title {
+  font-size: 14px;
+}
+
+.tablet-chassis.active .modal-header-date {
+  font-size: 11.5px;
+}
+
+.tablet-chassis.active .modal-form-content {
+  flex: 1;
+  min-height: 0;
+  padding: 10px 18px 14px;
+}
+
+.tablet-chassis.active .modal-page-title {
+  font-size: 17px;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.tablet-chassis.active .modal-top-grid {
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 8px;
+}
+
+.tablet-chassis.active .modal-upload-col {
+  height: 100%;
+  display: flex;
+}
+
+.tablet-chassis.active .upload-drop-zone {
+  height: 100%;
+  flex: 1;
+  border-radius: 11px;
+}
+
+.tablet-chassis.active .upload-placeholder-content {
+  padding: 8px;
+}
+
+.tablet-chassis.active .upload-icon-img {
+  width: 38px;
+  height: 38px;
+}
+
+.tablet-chassis.active .upload-main-text {
+  font-size: 13px;
+}
+
+.tablet-chassis.active .upload-sub-text {
+  font-size: 10.5px;
+}
+
+.tablet-chassis.active .modal-fields-col {
+  gap: 5px;
+  height: 100%;
+}
+
+.tablet-chassis.active .modal-field-group {
+  gap: 2px;
+}
+
+.tablet-chassis.active .modal-label {
+  font-size: 12.5px;
+}
+
+.tablet-chassis.active .modal-input-green,
+.tablet-chassis.active .modal-select-green,
+.tablet-chassis.active .price-input-wrapper {
+  height: 33px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.tablet-chassis.active .price-prefix {
+  padding: 0 3px;
+  font-size: 12px;
+}
+
+.tablet-chassis.active .modal-inline-fields {
+  gap: 9px;
+}
+
+.tablet-chassis.active .full-width-group {
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+.tablet-chassis.active .modal-textarea-green {
+  flex: 1;
+  min-height: 48px;
+  height: auto;
+  font-size: 12px;
+  padding: 6px 11px;
+  border-radius: 7px;
+}
+
+.tablet-chassis.active .modal-actions-row {
+  gap: 10px;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.tablet-chassis.active .btn-modal-cancel,
+.tablet-chassis.active .btn-modal-submit {
+  height: 33px;
+  font-size: 12.5px;
+  border-radius: 8px;
+  padding: 0 22px;
+}
+
+/* ========================================================
+   RESPONSIVE TABLET VIEWPORT (LEBAR LAYAR 641px - 1024px)
+   ======================================================== */
+@media (max-width: 1024px) {
+  .product-modal-card {
+    width: min(720px, 92vw);
+    max-width: 720px;
+  }
+
+  .modal-form-content {
+    padding: 16px 22px 18px;
+    gap: 12px;
+  }
+
+  .modal-top-grid {
+    grid-template-columns: 210px 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .modal-upload-col {
+    height: 100%;
+    display: flex;
+  }
+
+  .upload-drop-zone {
+    height: 100%;
+    flex: 1;
+  }
+
+  .modal-fields-col {
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .modal-input-green,
+  .modal-select-green,
+  .price-input-wrapper {
+    height: 36px;
+  }
+
+  .modal-textarea-green {
+    min-height: 60px;
+    height: 60px;
+  }
+
+  .btn-modal-cancel,
+  .btn-modal-submit {
+    height: 36px;
+  }
+}
+
+/* ========================================================
+   RESPONSIVE KECIL (MOBILE / SMARTPHONE <= 640px)
+   ======================================================== */
+@media (max-width: 640px) {
+  .product-modal-card {
+    width: 95vw;
+    max-width: 95vw;
+    border-radius: 12px;
+    max-height: 94vh;
+  }
+
+  .modal-header-bar {
+    padding: 8px 14px;
+  }
+
+  .modal-top-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .upload-drop-zone {
+    height: 130px;
+  }
+
+  .modal-form-content {
+    padding: 14px 14px 16px;
+    gap: 10px;
+  }
+
+  .modal-inline-fields {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .modal-actions-row {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .btn-modal-cancel,
+  .btn-modal-submit {
+    width: 100%;
+    height: 36px;
+  }
 }
 

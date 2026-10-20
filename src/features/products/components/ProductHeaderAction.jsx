@@ -11,10 +11,11 @@ export default function ProductHeaderAction({
         {/* Search Input Bar */}
         <div className="product-search-wrapper">
           <span className="product-search-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
+            <img
+              src="/icon-search.png"
+              alt="Cari"
+              style={{ width: '18px', height: '18px', objectFit: 'contain', display: 'block' }}
+            />
           </span>
           <input
             type="text"
@@ -32,9 +33,11 @@ export default function ProductHeaderAction({
           onClick={onAddClick}
         >
           <span className="btn-add-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-            </svg>
+            <img
+              src="/icon-tambah.png"
+              alt="Tambah"
+              style={{ width: '14px', height: '14px', objectFit: 'contain', display: 'block' }}
+            />
           </span>
           <span>Tambahkan Produk</span>
         </button>

@@ -5,20 +5,12 @@ export default function TransactionHeader({ searchQuery, onSearchChange, onAddCl
 
       <div className="trx-search-row">
         <div className="trx-search-input-box">
-          <svg
+          <img
+            src="/icon-search.png"
+            alt="Cari"
             className="trx-search-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#666"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
+            style={{ width: '18px', height: '18px', objectFit: 'contain' }}
+          />
           <input
             type="text"
             className="trx-search-input"
@@ -35,10 +27,11 @@ export default function TransactionHeader({ searchQuery, onSearchChange, onAddCl
           title="Tambah Produk ke Transaksi"
           aria-label="Tambah Produk"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
+          <img
+            src="/icon-tambah.png"
+            alt="Tambah"
+            style={{ width: '18px', height: '18px', objectFit: 'contain', display: 'block' }}
+          />
         </button>
       </div>
     </div>

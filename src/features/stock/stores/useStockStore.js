@@ -1,9 +1,10 @@
 import { create } from 'zustand'
+import { getCurrentDateString } from '../../../shared/utils/dateUtils.js'
 
 export const initialStockHistory = [
   {
     id: 1,
-    date: '01-10-2026',
+    date: getCurrentDateString(),
     product: 'Buku Tulis',
     type: 'Masuk',
     quantity: '+50',
@@ -11,7 +12,7 @@ export const initialStockHistory = [
   },
   {
     id: 2,
-    date: '01-10-2026',
+    date: getCurrentDateString(),
     product: 'Seragam SD',
     type: 'Masuk',
     quantity: '+14',
@@ -19,7 +20,7 @@ export const initialStockHistory = [
   },
   {
     id: 3,
-    date: '01-10-2026',
+    date: getCurrentDateString(),
     product: 'Bolpoin',
     type: 'Masuk',
     quantity: '+70',
@@ -27,7 +28,7 @@ export const initialStockHistory = [
   },
   {
     id: 4,
-    date: '01-10-2026',
+    date: getCurrentDateString(),
     product: 'Kapas',
     type: 'Masuk',
     quantity: '+30',
@@ -38,25 +39,27 @@ export const initialStockHistory = [
 export const productOptions = [
   'Buku Tulis',
   'Bolpoin',
-  'Seragam SD',
-  'Kapas',
   'Pensil 2B',
-  'Penghapus Joyko',
-  'Baju Pramuka',
-  'Kain Kafan Super',
+  'Seragam SD',
+  'Kain Kafan',
+  'Kapas',
+  'Buku Gambar',
+  'Penghapus',
 ]
 
 export const useStockStore = create((set) => ({
   history: initialStockHistory,
-  activeTab: 'Masuk', // 'Masuk' | 'Keluar'
+  searchQuery: '',
+  selectedType: 'Semua', // 'Semua' | 'Masuk' | 'Keluar'
   form: {
-    date: '01-10-2026',
+    date: getCurrentDateString(),
     product: '',
     quantity: '0',
     notes: '',
   },
 
-  setActiveTab: (tab) => set({ activeTab: tab }),
+  setSearchQuery: (query) => set({ searchQuery: query }),
+  setSelectedType: (type) => set({ selectedType: type }),
 
   updateFormField: (field, value) =>
     set((state) => ({
@@ -69,7 +72,7 @@ export const useStockStore = create((set) => ({
   resetForm: () =>
     set({
       form: {
-        date: '01-10-2026',
+        date: getCurrentDateString(),
         product: '',
         quantity: '0',
         notes: '',
@@ -90,7 +93,7 @@ export const useStockStore = create((set) => ({
         ...state.history,
       ],
       form: {
-        date: '01-10-2026',
+        date: getCurrentDateString(),
         product: '',
         quantity: '0',
         notes: '',

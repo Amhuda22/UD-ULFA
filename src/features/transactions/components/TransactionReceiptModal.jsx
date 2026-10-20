@@ -1,3 +1,5 @@
+import { getCurrentDateTimeString } from '../../../shared/utils/dateUtils.js'
+
 export default function TransactionReceiptModal({
   isOpen,
   onClose,
@@ -63,7 +65,7 @@ export default function TransactionReceiptModal({
             <div className="receipt-meta-row">
               <span className="meta-label">Tanggal</span>
               <span className="meta-colon">:</span>
-              <span className="meta-val">01-10-2026 12.45</span>
+              <span className="meta-val">{getCurrentDateTimeString()}</span>
             </div>
             <div className="receipt-meta-row">
               <span className="meta-label">Kasir</span>

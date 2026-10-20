@@ -90,6 +90,165 @@
 .tablet-chassis.active .dash-main {
   height: 100%;
   max-height: 100%;
+  overflow: hidden;
+}
+
+/* Tablet Mockup Khusus Dashboard - Rapi & Tepat 10px dari Batas Bawah */
+.tablet-chassis.active .dash-top-bar {
+  padding: 8px 20px;
+}
+
+.tablet-chassis.active .top-slogan {
+  font-size: 14px;
+}
+
+.tablet-chassis.active .top-date {
+  font-size: 14px;
+}
+
+.tablet-chassis.active .dash-sidebar {
+  width: 185px;
+  padding: 18px 10px;
+}
+
+.tablet-chassis.active .sidebar-brand-title {
+  font-size: 17px;
+}
+
+.tablet-chassis.active .sidebar-nav-item {
+  font-size: 12px;
+  padding: 7px 10px;
+}
+
+.tablet-chassis.active .dash-content-body {
+  padding: 8px 20px 10px 20px; /* Tepat 10px dari batas bawah tampilan */
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.tablet-chassis.active .dash-greeting-box {
+  margin-bottom: 6px;
+}
+
+.tablet-chassis.active .dash-page-title {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.tablet-chassis.active .dash-page-subtitle {
+  font-size: 12px;
+  margin: 1px 0 0 0;
+}
+
+.tablet-chassis.active .kpi-grid {
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tablet-chassis.active .kpi-card {
+  padding: 6px 14px;
+  border-radius: 12px;
+  gap: 12px;
+}
+
+.tablet-chassis.active .kpi-icon-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.tablet-chassis.active .kpi-icon-badge svg,
+.tablet-chassis.active .kpi-icon-badge img {
+  width: 36px;
+  height: 36px;
+}
+
+.tablet-chassis.active .kpi-title {
+  font-size: 12px;
+}
+
+.tablet-chassis.active .kpi-num {
+  font-size: 20px;
+  margin: 1px 0 0;
+  line-height: 1.15;
+}
+
+.tablet-chassis.active .kpi-subtext {
+  font-size: 10px;
+}
+
+.tablet-chassis.active .dash-lower-layout {
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.tablet-chassis.active .cat-section {
+  height: 100%;
+  min-height: 0;
+}
+
+.tablet-chassis.active .cat-section-heading {
+  font-size: 15px;
+  margin: 0 0 5px 0;
+}
+
+.tablet-chassis.active .cat-grid {
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.tablet-chassis.active .cat-card {
+  padding: 6px 12px;
+  border-radius: 12px;
+  gap: 12px;
+  min-height: 0;
+}
+
+.tablet-chassis.active .cat-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.tablet-chassis.active .cat-icon-img {
+  width: 36px;
+  height: 36px;
+}
+
+.tablet-chassis.active .cat-name {
+  font-size: 11.5px;
+  line-height: 1.2;
+}
+
+.tablet-chassis.active .cat-link {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.tablet-chassis.active .chart-card {
+  padding: 8px 12px 6px;
+  border-radius: 12px;
+  height: 100%;
+  min-height: 0;
+}
+
+.tablet-chassis.active .chart-title {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+}
+
+.tablet-chassis.active .chart-svg-container {
+  max-width: 270px;
+  flex: 1;
+  min-height: 0;
 }
 
 /* ========================================================
@@ -271,7 +430,7 @@
 
 /* Body Container */
 .dash-content-body {
-  padding: 10px 28px 14px;
+  padding: 10px 28px 10px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -288,7 +447,7 @@
 .dash-page-title {
   margin: 0;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 29px;
+  font-size: 24px;
   font-weight: 800;
   color: #050407;
   letter-spacing: -0.4px;
@@ -435,8 +594,8 @@
 }
 
 .cat-icon-box {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   background: #e3f3e6;
   display: flex;
@@ -454,12 +613,22 @@
   flex: 1;
 }
 
+.cat-icon-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
 .cat-name {
   font-family: var(--font-primary, "Poppins", sans-serif);
   font-size: 13px;
   font-weight: 800;
   color: #050407;
   line-height: 1.25;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .cat-link {

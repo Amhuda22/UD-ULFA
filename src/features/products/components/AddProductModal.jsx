@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import StoreLogo from '../../auth/components/StoreLogo.jsx'
+import { getCurrentFormattedDate } from '../../../shared/utils/dateUtils.js'
 
 export default function AddProductModal({
   isOpen,
@@ -42,7 +43,7 @@ export default function AddProductModal({
           </div>
 
           <div className="modal-header-date">
-            <span>Kamis, 1 Okt 2026</span>
+            <span>{getCurrentFormattedDate()}</span>
           </div>
         </div>
 
@@ -71,9 +72,7 @@ export default function AddProductModal({
                   <div className="upload-placeholder-content">
                     {/* Placeholder Icon Gallery/Image */}
                     <div className="upload-photo-icon" aria-hidden="true">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                      </svg>
+                      <img src="/upload-icon.png" alt="Pilih Gambar" className="upload-icon-img" />
                     </div>
                     <span className="upload-main-text">Pilih Gambar</span>
                     <span className="upload-sub-text">(Max 2 MB)</span>
@@ -145,13 +144,13 @@ export default function AddProductModal({
                   <label className="modal-label" htmlFor="input-product-price">
                     Harga :
                   </label>
-                  <div className="price-input-wrapper">
+                  <div className={`price-input-wrapper ${formErrors.price ? 'is-invalid' : ''}`}>
                     <span className="price-prefix">Rp</span>
                     <input
                       id="input-product-price"
                       type="text"
                       className={`modal-input-green price-field ${formErrors.price ? 'is-invalid' : ''}`}
-                      placeholder="0"
+                      placeholder=""
                       value={formData.price}
                       onChange={(e) => onChange('price', e.target.value)}
                     />
