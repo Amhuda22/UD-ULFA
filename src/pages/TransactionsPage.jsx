@@ -18,6 +18,7 @@ export default function TransactionsPage() {
     handleSelectMenu,
     handleLogout,
     cartItems,
+    totalAmount,
     totalDisplay,
     customer,
     setCustomer,
@@ -98,6 +99,7 @@ export default function TransactionsPage() {
             onClose={handleCloseSuccessModal}
             cartItems={cartItems}
             totalDisplay={totalDisplay}
+            totalAmount={totalAmount}
             customer={customer}
             paymentMethod={paymentMethod}
           />
