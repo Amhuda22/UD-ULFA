@@ -3,7 +3,7 @@
    ======================================================== */
 
 .product-content-body {
-  padding: 14px 28px 10px;
+  padding: 10px 24px 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -14,57 +14,170 @@
   overflow: hidden;
 }
 
-/* Header & Action Bar */
+/* Header Teks Halaman: "Daftar Produk" */
 .product-top-row {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: -2px; /* Jarak ke sisi atas kontainer pas 8px (10px gap - 2px) */
 }
 
 .product-page-title {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 800;
   color: #111111;
   margin: 0;
   letter-spacing: -0.3px;
+  line-height: 1.15;
 }
 
+/* ========================================================
+   3 KARTU RINGKASAN PRODUK (Total, Menipis, Habis)
+   ======================================================== */
+.prod-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px; /* Jarak kanan & kiri antar kontainer kartu = 12px */
+  margin-bottom: 2px; /* Jarak sisi bawah kontainer = 12px (10px + 2px) */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.prod-summary-card {
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  border-radius: 14px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.prod-summary-card:hover {
+  transform: translateY(-1px);
+}
+
+.card-total {
+  background: #fbf5fd;
+  border: 1px solid rgba(134, 38, 155, 0.12);
+}
+
+.card-menipis {
+  background: #fff9f2;
+  border: 1px solid rgba(234, 88, 12, 0.12);
+}
+
+.card-habis {
+  background: #fff5f5;
+  border: 1px solid rgba(220, 38, 38, 0.12);
+}
+
+.prod-summary-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.prod-summary-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.prod-summary-badge img,
+.prod-summary-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.badge-total {
+  background: #ebd4f7;
+}
+
+.badge-menipis {
+  background: #fedec8;
+}
+
+.badge-habis {
+  background: #fed6d6;
+}
+
+.prod-summary-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.prod-summary-label {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.15;
+}
+
+.prod-summary-val {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+/* ========================================================
+   BARIS PENCARIAN & TOMBOL TAMBAH PRODUK
+   ======================================================== */
 .product-actions-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   width: 100%;
 }
 
-/* Search Input Bar */
 .product-search-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: 1;
-  max-width: 540px;
-  height: 35px;
+  height: 30px;
   background: #ffffff;
   border: 1.5px solid #d1d5db;
-  border-radius: 8px;
-  padding: 0 14px;
+  border-radius: 6px;
+  padding: 0 12px;
   box-sizing: border-box;
   transition: border-color 0.18s ease;
 }
 
 .product-search-wrapper:focus-within {
-  border-color: #c841cb;
-  box-shadow: 0 0 0 3px rgba(200, 65, 203, 0.12);
+  border-color: #b52b65;
+  box-shadow: 0 0 0 3px rgba(181, 43, 101, 0.12);
 }
 
 .product-search-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b7280;
+  color: #9ca3af;
   flex-shrink: 0;
+}
+
+.product-search-icon svg,
+.product-search-img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  display: block;
 }
 
 .product-search-input {
@@ -73,8 +186,9 @@
   background: transparent;
   width: 100%;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13.5px;
-  color: #111111;
+  font-size: 12.5px;
+  color: #111827;
+  height: 100%;
 }
 
 .product-search-input::placeholder {
@@ -82,30 +196,29 @@
   font-weight: 400;
 }
 
-/* Tambahkan Produk Button */
 .btn-add-product {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 35px;
+  height: 30px;
   box-sizing: border-box;
-  background: #c841cb;
+  background: #b52b65;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 0 18px;
+  border-radius: 6px;
+  padding: 0 14px;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(200, 65, 203, 0.25);
+  box-shadow: 0 2px 6px rgba(181, 43, 101, 0.25);
   transition: all 0.18s ease;
 }
 
 .btn-add-product:hover {
-  background: #b532b8;
+  background: #9d2255;
   transform: translateY(-1px);
 }
 
@@ -115,57 +228,76 @@
   justify-content: center;
 }
 
-/* Category Filter Pills */
+.btn-add-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ========================================================
+   CATEGORY FILTER PILLS (HORIZONTAL BADGES)
+   ======================================================== */
 .product-category-pills {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 10px;
-  margin-top: 2px;
   box-sizing: border-box;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.product-category-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .cat-pill-btn {
-  flex: 1;
-  height: 35px;
+  flex: 1 1 auto;
+  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0 14px;
-  border-radius: 8px;
+  border-radius: 999px;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 11.5px;
+  font-weight: 600;
   cursor: pointer;
-  background: #ffffff;
-  border: 1.5px solid #d1d5db;
-  color: #111111;
+  background: #eadcf6;
+  border: none;
+  color: #3b183a;
   white-space: nowrap;
-  transition: all 0.18s ease;
+  transition: all 0.15s ease;
   user-select: none;
+  line-height: 1;
 }
 
 .cat-pill-btn:hover {
-  background: #f8fafc;
+  background: #dfcbef;
 }
 
 .cat-pill-btn.active {
-  background: #c841cb;
-  border-color: #c841cb;
+  background: #501d52;
   color: #ffffff;
-  box-shadow: 0 2px 6px rgba(200, 65, 203, 0.22);
+  font-weight: 700;
 }
 
-/* Product Table Card Container */
+/* ========================================================
+   PRODUCT TABLE CARD & PAGINATION FOOTER
+   ======================================================== */
 .product-table-card {
   position: relative;
   background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  border-left: none;
+  border-right: none;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-  margin-top: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
   width: 100%;
   box-sizing: border-box;
   flex: 1;
@@ -174,162 +306,136 @@
   flex-direction: column;
 }
 
-/* Full width header background extending into the scrollbar corner */
-.product-table-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 35px;
-  background: #f7e8f8;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Full width table header divider line extending across scrollbar to right border */
-.product-table-card::after {
-  content: "";
-  position: absolute;
-  top: 33.5px;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  background: #e2e8f0;
-  z-index: 10;
-  pointer-events: none;
-}
-
 .product-table-scroll {
   width: 100%;
   flex: 1;
   min-height: 0;
-  overflow-x: auto;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 
-/* Custom Scrollbar 3px Rapi & Konsisten dengan Warna Brand UD ULFA */
 .product-table-scroll::-webkit-scrollbar {
-  width: 3px !important;
-  height: 3px !important;
-}
-
-.product-table-scroll::-webkit-scrollbar-track {
-  background: #f1f5f9 !important;
-  border-radius: 999px !important;
-  margin-top: 35px !important;
-}
-
-.product-table-scroll::-webkit-scrollbar-track:vertical {
-  margin-top: 35px !important;
-}
-
-.product-table-scroll::-webkit-scrollbar-track:horizontal {
-  margin-top: 0 !important;
-}
-
-.product-table-scroll::-webkit-scrollbar-thumb {
-  background: #c841cb !important;
-  border-radius: 999px !important;
-}
-
-.product-table-scroll::-webkit-scrollbar-thumb:hover {
-  background: #a82fa9 !important;
+  display: none;
 }
 
 .product-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
   text-align: left;
+  table-layout: fixed;
+  border-left: none !important;
+  border-right: none !important;
 }
 
-/* Table Head Sticky */
 .product-table thead tr {
-  background: #f7e8f8;
+  background: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .product-table thead th {
   position: sticky;
   top: 0;
-  background: #f7e8f8;
-  padding: 7px 14px;
-  line-height: 18px;
-  height: 35px;
+  background: #f8fafc;
+  padding: 4px 8px;
+  height: 30px;
   box-sizing: border-box;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 800;
-  color: #111111;
-  text-align: center;
-  vertical-align: middle;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1.5px solid #e2e8f0;
+  color: #111827;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  border-left: none !important;
+  border-right: none !important;
   white-space: nowrap;
-  z-index: 3;
-}
-
-.product-table thead th:last-child {
-  border-right: none;
+  z-index: 2;
 }
 
 .product-table thead th.col-no {
-  width: 48px;
+  width: 8%;
   text-align: center;
 }
 
 .product-table thead th.col-img {
-  width: 80px;
+  width: 10%;
   text-align: center;
 }
 
+.product-table thead th.col-name {
+  width: 18%;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.product-table thead th.col-cat {
+  width: 16%;
+  text-align: left;
+  padding-left: 6px;
+}
+
+.product-table thead th.col-price {
+  width: 13%;
+  text-align: left;
+  padding-left: 6px;
+}
+
 .product-table thead th.col-stock {
-  width: 65px;
+  width: 8%;
+  text-align: center;
+}
+
+.product-table thead th.col-status {
+  width: 14%;
   text-align: center;
 }
 
 .product-table thead th.col-action {
-  width: 100px;
+  width: 13%;
   text-align: center;
-  color: #111111;
 }
 
 /* Table Body */
 .product-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  border-left: none !important;
+  border-right: none !important;
   transition: background 0.12s ease;
+  height: 44px;
 }
 
 .product-table tbody tr:hover {
-  background: #fdfafd;
+  background: #fafafa;
 }
 
-.product-table tbody td {
-  padding: 8px 14px;
-  font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13.5px;
-  vertical-align: middle;
-  border-right: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  color: #111111;
-}
-
-.product-table tbody td:last-child {
-  border-right: none;
-}
-
-.product-table tbody tr:last-child td {
+.product-table tbody tr:last-child {
   border-bottom: none;
 }
 
-/* Specific Cells */
+.product-table tbody td {
+  padding: 4px 8px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 12px;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid #f1f5f9;
+  border-left: none !important;
+  border-right: none !important;
+  color: #111827;
+  box-sizing: border-box;
+}
+
 .col-no {
   text-align: center;
 }
 
-.no-badge {
+.no-text {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 13px;
+  font-weight: 400;
   color: #111111;
-  font-weight: 800;
-  font-size: 14.5px;
 }
 
 .col-img {
@@ -337,37 +443,56 @@
 }
 
 .product-thumb-box {
-  width: 52px;
-  height: 44px;
+  width: 36px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 6px;
-  background: #f8fafc;
+  background: transparent;
 }
 
 .product-thumb-img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   display: block;
 }
 
+.product-table tbody td.col-name {
+  padding-left: 16px;
+}
+
+.product-table tbody td.col-cat {
+  padding-left: 6px;
+}
+
+.product-table tbody td.col-price {
+  padding-left: 6px;
+}
+
 .product-name-text {
-  font-weight: 600;
-  color: #111111;
+  font-weight: 400;
+  color: #111827;
+  font-size: 12.5px;
+  white-space: nowrap;
 }
 
 .product-cat-text {
-  color: #2d3748;
-  font-size: 13px;
-  font-weight: 500;
+  color: #111827;
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.25;
+  display: inline-block;
+  white-space: normal;
+  max-width: 105px;
 }
 
 .product-price-text {
-  font-weight: 700;
-  color: #111111;
+  font-weight: 400;
+  color: #111827;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -376,9 +501,40 @@
 }
 
 .product-stock-text {
-  font-weight: 800;
-  font-size: 14.5px;
-  color: #111111;
+  font-weight: 400;
+  font-size: 12px;
+  color: #111827;
+}
+
+/* Status Badges */
+.col-status {
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5px 14px;
+  border-radius: 999px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11px;
+  font-weight: 400;
+  color: #ffffff;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.status-tersedia {
+  background: #197a44;
+}
+
+.status-menipis {
+  background: #cb7217;
+}
+
+.status-habis {
+  background: #b91c1c;
 }
 
 /* Action Buttons */
@@ -390,47 +546,155 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .btn-action-edit {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: 6px;
-  border: none;
-  background: #c841cb;
-  color: #ffffff;
+  border: 1px solid #d8b4fe;
+  background: #f3e8ff;
+  color: #7e22ce;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.15s ease;
-  box-shadow: 0 1px 3px rgba(200, 65, 203, 0.25);
+  padding: 0;
 }
 
 .btn-action-edit:hover {
-  background: #b532b8;
-  transform: scale(1.05);
+  background: #e9d5ff;
+  transform: translateY(-1px);
 }
 
 .btn-action-delete {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: 6px;
-  border: none;
-  background: #de582e;
-  color: #ffffff;
+  border: 1px solid #fecdd3;
+  background: #ffe4e6;
+  color: #e11d48;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.15s ease;
-  box-shadow: 0 1px 3px rgba(222, 88, 46, 0.25);
+  padding: 0;
 }
 
 .btn-action-delete:hover {
-  background: #c94921;
-  transform: scale(1.05);
+  background: #fecdd3;
+  transform: translateY(-1px);
+}
+
+.action-icon-img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+}
+
+.action-icon-edit {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(74%) saturate(4975%) hue-rotate(271deg) brightness(85%) contrast(96%);
+}
+
+.action-icon-delete {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(91%) saturate(5838%) hue-rotate(340deg) brightness(92%) contrast(93%);
+}
+
+/* Table Pagination Footer */
+.product-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 14px;
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.pagination-info {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-btn {
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pagination-nav {
+  height: 23px;
+  padding: 0 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.pagination-nav:hover {
+  background: #f3f4f6;
+}
+
+.pagination-num {
+  width: 23px;
+  height: 23px;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-num:hover {
+  background: #f3f4f6;
+}
+
+.pagination-num.active {
+  background: #c084fc;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pagination-dots {
+  color: #9ca3af;
+  font-size: 10.5px;
+  padding: 0 2px;
+}
+
+.pagination-num:hover {
+  background: #f3f4f6;
+}
+
+.pagination-num.active {
+  background: #d8b4fe;
+  color: #4a154b;
+  font-weight: 800;
+}
+
+.pagination-dots {
+  font-size: 12px;
+  color: #6b7280;
+  padding: 0 2px;
 }
 
 .table-empty-cell {

@@ -1,26 +1,26 @@
 export default function DashboardSalesChart() {
-  // Koordinat Y untuk 8 level (35 s/d 0) dengan rentang y: 22 s/d 148
-  // Y-step = (148 - 22) / 7 = 18px per 5 unit
+  // Koordinat Y untuk 8 level (35 s/d 0) dengan rentang y: 16 s/d 220
+  // Y-step = (220 - 16) / 7 = 29.1px per 5 unit (tinggi & mengisi penuh kontainer)
   const levels = [
-    { label: '35', y: 22 },
-    { label: '30', y: 40 },
-    { label: '25', y: 58 },
-    { label: '20', y: 76 },
-    { label: '15', y: 94 },
-    { label: '10', y: 112 },
-    { label: '5', y: 130 },
-    { label: '0', y: 148 },
+    { label: '35', y: 16 },
+    { label: '30', y: 45 },
+    { label: '25', y: 74 },
+    { label: '20', y: 103 },
+    { label: '15', y: 132 },
+    { label: '10', y: 161 },
+    { label: '5', y: 190 },
+    { label: '0', y: 220 },
   ]
 
-  // Data 7 hari penjualan seluruhnya 0 (kosong di baseline y=148)
+  // Data 7 hari penjualan seluruhnya 0 (di baseline y=220)
   const daysData = [
-    { day: 'Sen', x: 30, y: 148 },
-    { day: 'Sel', x: 67, y: 148 },
-    { day: 'Rab', x: 104, y: 148 },
-    { day: 'Kam', x: 141, y: 148 },
-    { day: 'Jum', x: 178, y: 148 },
-    { day: 'sab', x: 215, y: 148 },
-    { day: 'Min', x: 252, y: 148 },
+    { day: 'Sen', x: 34, y: 220 },
+    { day: 'Sel', x: 72, y: 220 },
+    { day: 'Rab', x: 110, y: 220 },
+    { day: 'Kam', x: 148, y: 220 },
+    { day: 'Jum', x: 186, y: 220 },
+    { day: 'sab', x: 224, y: 220 },
+    { day: 'Min', x: 258, y: 220 },
   ]
 
   const polylineStr = daysData.map((d) => `${d.x},${d.y}`).join(' ')
@@ -30,7 +30,7 @@ export default function DashboardSalesChart() {
       <h3 className="chart-title">Grafik Penjualan</h3>
 
       <div className="chart-svg-container">
-        <svg viewBox="0 0 270 172" className="sales-chart-svg">
+        <svg viewBox="0 0 270 248" className="sales-chart-svg">
           {/* Garis Horizontal Grid Putus-putus Hijau Tua */}
           {levels.slice(0, 7).map((lvl, idx) => (
             <line
@@ -45,11 +45,11 @@ export default function DashboardSalesChart() {
             />
           ))}
 
-          {/* Garis Dasar Horizontal Sumbu X (Solid di y=148) */}
-          <line x1="26" y1="148" x2="262" y2="148" stroke="#1c4731" strokeWidth="1.2" />
+          {/* Garis Dasar Horizontal Sumbu X (Solid di y=220) */}
+          <line x1="26" y1="220" x2="262" y2="220" stroke="#1c4731" strokeWidth="1.2" />
 
-          {/* Sumbu Y Vertikal Kiri (Solid dari y=14 s/d 148) */}
-          <line x1="26" y1="14" x2="26" y2="148" stroke="#1c4731" strokeWidth="1.2" />
+          {/* Sumbu Y Vertikal Kiri (Solid dari y=10 s/d 220) */}
+          <line x1="26" y1="10" x2="26" y2="220" stroke="#1c4731" strokeWidth="1.2" />
 
           {/* Label Sumbu Y (35, 30, 25, 20, 15, 10, 5, 0) */}
           {levels.map((lvl, idx) => (
@@ -66,7 +66,7 @@ export default function DashboardSalesChart() {
 
           {/* Titik Tick Hitam pada Sumbu Dasar X */}
           {daysData.map((d, idx) => (
-            <circle key={`tick-${idx}`} cx={d.x} cy="148" r="1.5" fill="#1c4731" />
+            <circle key={`tick-${idx}`} cx={d.x} cy="220" r="1.5" fill="#1c4731" />
           ))}
 
           {/* Garis Tren Penjualan Toska / Cyan (#1bb5bd) */}
@@ -84,7 +84,7 @@ export default function DashboardSalesChart() {
             <text
               key={`day-${idx}`}
               x={d.x}
-              y="162"
+              y="238"
               textAnchor="middle"
               className="chart-day-label"
             >

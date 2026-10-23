@@ -1,6 +1,7 @@
 import { useProducts } from '../features/products/hooks/useProducts.js'
 import DashboardSidebar from '../features/dashboard/components/DashboardSidebar.jsx'
 import DashboardTopBar from '../features/dashboard/components/DashboardTopBar.jsx'
+import ProductSummaryCards from '../features/products/components/ProductSummaryCards.jsx'
 import ProductHeaderAction from '../features/products/components/ProductHeaderAction.jsx'
 import ProductCategoryPills from '../features/products/components/ProductCategoryPills.jsx'
 import ProductTable from '../features/products/components/ProductTable.jsx'
@@ -9,7 +10,6 @@ import '../features/products/styles/products.css'
 import './DashboardPage.css'
 
 export default function ProductsPage() {
-  // Seluruh logic UI dan state dihandle oleh custom hook useProducts sesuai React Coding SOP
   const {
     viewMode,
     setViewMode,
@@ -52,28 +52,40 @@ export default function ProductsPage() {
 
           {/* 2. Area Konten Utama Kanan */}
           <section className="dash-main">
-            {/* Top Bar (Slogan & Tanggal Dinamis Hari Ini) */}
+            {/* Top Bar (Dipertahankan identik) */}
             <DashboardTopBar
               slogan="“Akan melayani dengan sepenuh hati”"
             />
 
             {/* Konten Halaman Produk */}
             <div className="dash-content-body product-content-body">
-              {/* Header Judul, Pencarian, & Tombol Tambah */}
+              {/* Header Teks: Daftar Produk (Dipertahankan) */}
+              <div className="product-top-row">
+                <h1 className="product-page-title">Daftar Produk</h1>
+              </div>
+
+              {/* 3 Kartu Ringkasan (Total Produk, Stok Menipis, Stok Habis) */}
+              <ProductSummaryCards
+                total={120}
+                menipis={8}
+                habis={2}
+              />
+
+              {/* Baris Pencarian & Tombol Tambah Produk */}
               <ProductHeaderAction
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
                 onAddClick={handleOpenAddModal}
               />
 
-              {/* Filter Kategori (Semua, ATK, Perlengkapan Kematian, Perlengkapan Sekolah) */}
+              {/* Filter Kategori (Semua, ATK, Perlengkapan Kematian, Perlengkapan Sekolah, Lainnya) */}
               <ProductCategoryPills
                 categories={categories}
                 selectedCategory={selectedCategory}
                 onSelectCategory={setSelectedCategory}
               />
 
-              {/* Tabel Daftar Produk */}
+              {/* Tabel Daftar Produk & Footer Pagination */}
               <ProductTable
                 products={products}
                 onDelete={deleteProduct}
@@ -81,7 +93,7 @@ export default function ProductsPage() {
             </div>
           </section>
 
-          {/* 3. Modal Tambahkan Produk (Muncul saat tombol tambah diklik) */}
+          {/* 3. Modal Tambahkan Produk */}
           <AddProductModal
             isOpen={isAddModalOpen}
             onClose={handleCloseAddModal}

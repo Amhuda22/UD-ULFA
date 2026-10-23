@@ -11,89 +11,109 @@ export default function ProductTable({ products, onDelete }) {
               <th className="col-cat">Kategori</th>
               <th className="col-price">Harga</th>
               <th className="col-stock">Stok</th>
+              <th className="col-status">Status</th>
               <th className="col-action">Aksi</th>
             </tr>
           </thead>
           <tbody>
             {products.length === 0 ? (
               <tr>
-                <td colSpan="7" className="table-empty-cell">
+                <td colSpan="8" className="table-empty-cell">
                   Tidak ada produk yang cocok dengan pencarian atau kategori ini.
                 </td>
               </tr>
             ) : (
-              products.map((item) => (
-                <tr key={item.id}>
-                  {/* No */}
-                  <td className="col-no">
-                    <span className="no-badge">{item.no}</span>
-                  </td>
+              products.map((item, idx) => {
+                // Determine status badge
+                const isOutOfStock = item.stock <= 0
+                const isLowStock = !isOutOfStock && item.stock <= 20
+                const statusText = isOutOfStock ? 'Habis' : isLowStock ? 'Menipis' : 'Tersedia'
+                const statusClass = isOutOfStock
+                  ? 'status-habis'
+                  : isLowStock
+                  ? 'status-menipis'
+                  : 'status-tersedia'
 
-                  {/* Gambar */}
-                  <td className="col-img">
-                    <div className="product-thumb-box">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="product-thumb-img"
-                        loading="lazy"
-                      />
-                    </div>
-                  </td>
+                return (
+                  <tr key={item.id || idx}>
+                    {/* No */}
+                    <td className="col-no">
+                      <span className="no-text">{item.no || `${idx + 1}.`}</span>
+                    </td>
 
-                  {/* Nama Produk */}
-                  <td className="col-name">
-                    <span className="product-name-text">{item.name}</span>
-                  </td>
-
-                  {/* Kategori */}
-                  <td className="col-cat">
-                    <span className="product-cat-text">{item.category}</span>
-                  </td>
-
-                  {/* Harga */}
-                  <td className="col-price">
-                    <span className="product-price-text">{item.priceDisplay}</span>
-                  </td>
-
-                  {/* Stok */}
-                  <td className="col-stock">
-                    <span className="product-stock-text">{item.stock}</span>
-                  </td>
-
-                  {/* Aksi */}
-                  <td className="col-action">
-                    <div className="action-buttons-group">
-                      {/* Tombol Edit */}
-                      <button
-                        type="button"
-                        className="btn-action-edit"
-                        title="Edit Produk"
-                      >
+                    {/* Gambar */}
+                    <td className="col-img">
+                      <div className="product-thumb-box">
                         <img
-                          src="/icon-edit.png"
-                          alt="Edit"
-                          style={{ width: '16px', height: '16px', objectFit: 'contain', display: 'block' }}
+                          src={item.image}
+                          alt={item.name}
+                          className="product-thumb-img"
+                          loading="lazy"
                         />
-                      </button>
+                      </div>
+                    </td>
 
-                      {/* Tombol Hapus */}
-                      <button
-                        type="button"
-                        className="btn-action-delete"
-                        title="Hapus Produk"
-                        onClick={() => onDelete(item.id)}
-                      >
-                        <img
-                          src="/icon-delete.png"
-                          alt="Hapus"
-                          style={{ width: '16px', height: '16px', objectFit: 'contain', display: 'block' }}
-                        />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))
+                    {/* Nama Produk */}
+                    <td className="col-name">
+                      <span className="product-name-text">{item.name}</span>
+                    </td>
+
+                    {/* Kategori */}
+                    <td className="col-cat">
+                      <span className="product-cat-text">{item.category}</span>
+                    </td>
+
+                    {/* Harga */}
+                    <td className="col-price">
+                      <span className="product-price-text">{item.priceDisplay}</span>
+                    </td>
+
+                    {/* Stok */}
+                    <td className="col-stock">
+                      <span className="product-stock-text">{item.stock}</span>
+                    </td>
+
+                    {/* Status */}
+                    <td className="col-status">
+                      <span className={`status-badge ${statusClass}`}>
+                        {statusText}
+                      </span>
+                    </td>
+
+                    {/* Aksi */}
+                    <td className="col-action">
+                      <div className="action-buttons-group">
+                        {/* Tombol Edit */}
+                        <button
+                          type="button"
+                          className="btn-action-edit"
+                          title="Edit Produk"
+                        >
+                          <img
+                            src="/icon-edit.png"
+                            alt="Edit"
+                            className="action-icon-img action-icon-edit"
+                          />
+                        </button>
+
+                        {/* Tombol Hapus */}
+                        <button
+                          type="button"
+                          className="btn-action-delete"
+                          title="Hapus Produk"
+                          onClick={() => onDelete(item.id)}
+                        >
+                          <img
+                            src="/icon-delete.png"
+                            alt="Hapus"
+                            className="action-icon-img action-icon-delete"
+                          />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })
             )}
           </tbody>
         </table>

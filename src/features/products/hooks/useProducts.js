@@ -148,7 +148,7 @@ export function useProducts() {
     })
   }, [products, selectedCategory, searchQuery])
 
-  const categories = ['Semua', 'ATK', 'Perlengkapan Kematian', 'Perlengkapan Sekolah']
+  const categories = ['Semua', 'ATK', 'Perlengkapan Kematian', 'Perlengkapan Sekolah', 'Lainnya']
 
   return {
     viewMode,

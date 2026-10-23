@@ -93,31 +93,85 @@
   overflow: hidden;
 }
 
-/* Tablet Mockup Khusus Dashboard - Rapi & Tepat 10px dari Batas Bawah */
 .tablet-chassis.active .dash-top-bar {
-  padding: 8px 20px;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .tablet-chassis.active .top-slogan {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .tablet-chassis.active .top-date {
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 1.2;
 }
 
 .tablet-chassis.active .dash-sidebar {
-  width: 185px;
-  padding: 18px 10px;
+  width: 250px;
+  padding: 30px 15px;
+}
+
+.tablet-chassis.active .sidebar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.tablet-chassis.active .sidebar-brand-icon .store-logo-img {
+  width: 40px !important;
+  height: auto !important;
 }
 
 .tablet-chassis.active .sidebar-brand-title {
-  font-size: 17px;
+  font-family: var(--font-primary, "Poppins", sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  line-height: 1;
 }
 
-.tablet-chassis.active .sidebar-nav-item {
-  font-size: 12px;
-  padding: 7px 10px;
+.tablet-chassis.active .sidebar-nav {
+  gap: 5px;
+}
+
+.tablet-chassis.active .sidebar-nav-item,
+.tablet-chassis.active .sidebar-logout-btn {
+  height: 45px;
+  padding: 0 15px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+  gap: 14px;
+}
+
+.tablet-chassis.active .sidebar-nav-item.active {
+  font-weight: 600;
+}
+
+.tablet-chassis.active .nav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.tablet-chassis.active .nav-icon-img {
+  width: 30px;
+  height: 30px;
 }
 
 .tablet-chassis.active .dash-content-body {
@@ -135,41 +189,44 @@
 }
 
 .tablet-chassis.active .dash-page-title {
-  font-size: 20px;
+  font-size: 30px;
   line-height: 1.15;
 }
 
 .tablet-chassis.active .dash-page-subtitle {
-  font-size: 12px;
+  font-size: 16px;
   margin: 1px 0 0 0;
 }
 
 .tablet-chassis.active .kpi-grid {
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .tablet-chassis.active .kpi-card {
-  padding: 6px 14px;
-  border-radius: 12px;
-  gap: 12px;
+  height: 90px;
+  min-height: 90px;
+  padding: 6px 16px;
+  border-radius: 14px;
+  gap: 14px;
+  box-sizing: border-box;
 }
 
 .tablet-chassis.active .kpi-icon-badge {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
   flex-shrink: 0;
 }
 
 .tablet-chassis.active .kpi-icon-badge svg,
 .tablet-chassis.active .kpi-icon-badge img {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
 }
 
 .tablet-chassis.active .kpi-title {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .tablet-chassis.active .kpi-num {
@@ -179,86 +236,131 @@
 }
 
 .tablet-chassis.active .kpi-subtext {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .tablet-chassis.active .dash-lower-layout {
-  gap: 10px;
-  flex: 1;
+  width: 100%;
+  grid-template-columns: 400px minmax(0, 1fr);
+  gap: 12px;
+  flex: none;
   min-height: 0;
+  align-items: stretch;
 }
 
 .tablet-chassis.active .cat-section {
-  height: 100%;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  flex-shrink: 0;
+  height: auto;
   min-height: 0;
 }
 
 .tablet-chassis.active .cat-section-heading {
-  font-size: 15px;
-  margin: 0 0 5px 0;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0 0 10px 0;
 }
 
 .tablet-chassis.active .cat-grid {
-  gap: 8px;
-  flex: 1;
+  grid-template-columns: repeat(2, 194px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 12px;
+  width: 400px;
+  height: 212px;
   min-height: 0;
 }
 
 .tablet-chassis.active .cat-card {
-  padding: 6px 12px;
-  border-radius: 12px;
-  gap: 12px;
-  min-height: 0;
+  width: 194px;
+  min-width: 194px;
+  max-width: 194px;
+  height: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  gap: 14px;
+  box-sizing: border-box;
 }
 
 .tablet-chassis.active .cat-icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  width: 65px;
+  height: 65px;
+  border-radius: 12px;
   flex-shrink: 0;
 }
 
 .tablet-chassis.active .cat-icon-img {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
 }
 
 .tablet-chassis.active .cat-name {
-  font-size: 11.5px;
-  line-height: 1.2;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
 .tablet-chassis.active .cat-link {
-  font-size: 10px;
-  margin-top: 2px;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 .tablet-chassis.active .chart-card {
-  padding: 8px 12px 6px;
-  border-radius: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 100%;
+  max-height: 246px;
+  padding: 10px 12px 10px;
+  border-radius: 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
   min-height: 0;
 }
 
 .tablet-chassis.active .chart-title {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 800;
   margin: 0 0 4px 0;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .tablet-chassis.active .chart-svg-container {
-  max-width: 270px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   min-height: 0;
+}
+
+.tablet-chassis.active .sales-chart-svg {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: block;
 }
 
 /* ========================================================
    SIDEBAR NAVIGASI KIRI (PURPLE / PLUM)
    ======================================================== */
 .dash-sidebar {
-  width: 215px;
+  width: 400px;
   flex-shrink: 0;
   background: linear-gradient(150deg, #4d194c 0%, #683367 22%, #8e5c8d 48%, #af7faf 72%, #cb9dcb 88%, #deb2df 100%);
-  padding: 30px 10px 30px;
+  padding: 30px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -272,9 +374,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   width: 100%;
-  margin: 0 0 40px 0;
+  margin: 0 0 30px 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -287,9 +389,14 @@
   filter: brightness(0) invert(1);
 }
 
+.sidebar-brand-icon .store-logo-img {
+  width: 90px !important;
+  height: auto !important;
+}
+
 .sidebar-brand-title {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 27px;
+  font-size: 48px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.5px;
@@ -301,7 +408,7 @@
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   margin-top: 0;
   flex: 1;
 }
@@ -309,17 +416,17 @@
 .sidebar-nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   width: 100%;
-  height: 44px;
-  padding: 0 12px;
+  height: 70px;
+  padding: 0 22px;
   border: none;
   background: transparent;
-  border-radius: 10px;
+  border-radius: 16px;
   color: #ffffff;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 19px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 700;
   cursor: pointer;
   text-align: left;
   transition: all 0.18s ease;
@@ -331,8 +438,8 @@
 }
 
 .sidebar-nav-item.active {
-  background: rgba(255, 255, 255, 0.26);
-  font-weight: 400;
+  background: rgba(255, 255, 255, 0.28);
+  font-weight: 800;
 }
 
 .nav-icon {
@@ -340,14 +447,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 29px;
-  height: 29px;
+  width: 45px;
+  height: 45px;
   color: #ffffff;
 }
 
 .nav-icon-img {
-  width: 28px;
-  height: 28px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
   display: block;
 }
@@ -366,17 +473,17 @@
 .sidebar-logout-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   width: 100%;
-  height: 44px;
-  padding: 0 12px;
+  height: 70px;
+  padding: 0 22px;
   border: none;
   background: transparent;
-  border-radius: 10px;
+  border-radius: 16px;
   color: #ffffff;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 19px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 700;
   cursor: pointer;
   text-align: left;
   transition: all 0.18s ease;
@@ -403,8 +510,10 @@
 
 /* Top Bar: Slogan Serif & Tanggal */
 .dash-top-bar {
+  height: 70px;
+  min-height: 70px;
   background: #edd3ef;
-  padding: 10px 28px;
+  padding: 0 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -414,18 +523,20 @@
 
 .top-slogan {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 27px;
+  font-weight: 400;
   color: #0b090e;
   letter-spacing: 0.1px;
+  line-height: 1.2;
 }
 
 .top-date {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 18px;
+  font-size: 27px;
   font-weight: 800;
   color: #0b090e;
   letter-spacing: -0.2px;
+  line-height: 1.2;
 }
 
 /* Body Container */
@@ -447,7 +558,7 @@
 .dash-page-title {
   margin: 0;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 800;
   color: #050407;
   letter-spacing: -0.4px;
@@ -455,9 +566,9 @@
 }
 
 .dash-page-subtitle {
-  margin: 2px 0 0 0;
+  margin: 3px 0 0 0;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   color: #1f1b24;
 }
@@ -473,12 +584,14 @@
 }
 
 .kpi-card {
+  height: 126px;
+  min-height: 126px;
   background: #f1f3f5;
-  border-radius: 14px;
-  padding: 10px 16px;
+  border-radius: 20px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 24px;
   box-shadow: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   box-sizing: border-box;
@@ -490,14 +603,20 @@
 }
 
 .kpi-icon-badge {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
   background: #e3f3e6;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.kpi-icon-badge svg,
+.kpi-icon-badge img {
+  width: 70px;
+  height: 70px;
 }
 
 .kpi-data {
@@ -511,7 +630,7 @@
 
 .kpi-title {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 14.5px;
+  font-size: 22px;
   font-weight: 800;
   color: #0b090e;
   letter-spacing: -0.1px;
@@ -519,17 +638,17 @@
 
 .kpi-num {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: #050407;
   line-height: 1.15;
-  margin: 2px 0 1px;
+  margin: 3px 0 1px;
   letter-spacing: -0.3px;
 }
 
 .kpi-subtext {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 11.5px;
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -561,7 +680,7 @@
 .cat-section-heading {
   margin: 0 0 8px 0;
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 800;
   color: #050407;
   letter-spacing: -0.2px;
@@ -570,21 +689,23 @@
 .cat-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 140px);
   gap: 10px;
   flex: 1;
   min-height: 0;
 }
 
 .cat-card {
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
   background: #f1f3f5;
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 16px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   box-sizing: border-box;
-  height: 100%;
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
@@ -594,9 +715,9 @@
 }
 
 .cat-icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
   background: #e3f3e6;
   display: flex;
   align-items: center;
@@ -614,15 +735,15 @@
 }
 
 .cat-icon-img {
-  width: 36px;
-  height: 36px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
   display: block;
 }
 
 .cat-name {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 800;
   color: #050407;
   line-height: 1.25;
@@ -633,7 +754,7 @@
 
 .cat-link {
   font-family: var(--font-primary, "Poppins", sans-serif);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   color: #3ca2a4;
   text-decoration: none;
@@ -659,6 +780,7 @@
   height: 100%;
   box-sizing: border-box;
   min-height: 0;
+  min-width: 0;
 }
 
 .chart-title {
@@ -674,6 +796,7 @@
 .chart-svg-container {
   width: 100%;
   max-width: 320px;
+  min-width: 0;
   flex: 1;
   display: flex;
   align-items: center;
