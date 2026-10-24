@@ -52,28 +52,68 @@
   padding: 8px 16px;
   display: flex;
   align-items: center;
+  text-align: left;
   gap: 12px;
   box-sizing: border-box;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  user-select: none;
 }
 
 .prod-summary-card:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.prod-summary-card:active {
+  transform: translateY(0);
 }
 
 .card-total {
   background: #fbf5fd;
-  border: 1px solid rgba(134, 38, 155, 0.12);
+  border: 1.5px solid rgba(134, 38, 155, 0.15);
+}
+
+.card-total:hover {
+  border-color: rgba(134, 38, 155, 0.4);
+}
+
+.card-total.active {
+  border: 2px solid #86269b;
+  box-shadow: 0 0 0 3px rgba(134, 38, 155, 0.22);
+  background: #f7ebfd;
 }
 
 .card-menipis {
   background: #fff9f2;
-  border: 1px solid rgba(234, 88, 12, 0.12);
+  border: 1.5px solid rgba(234, 88, 12, 0.15);
+}
+
+.card-menipis:hover {
+  border-color: rgba(234, 88, 12, 0.4);
+}
+
+.card-menipis.active {
+  border: 2px solid #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.22);
+  background: #fef1e4;
 }
 
 .card-habis {
   background: #fff5f5;
-  border: 1px solid rgba(220, 38, 38, 0.12);
+  border: 1.5px solid rgba(220, 38, 38, 0.15);
+}
+
+.card-habis:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+.card-habis.active {
+  border: 2px solid #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.22);
+  background: #fde8e8;
 }
 
 .prod-summary-badge {
@@ -355,19 +395,19 @@
 }
 
 .product-table thead th.col-no {
-  width: 8%;
+  width: 7%;
   text-align: center;
 }
 
 .product-table thead th.col-img {
-  width: 10%;
+  width: 9%;
   text-align: center;
 }
 
 .product-table thead th.col-name {
-  width: 18%;
+  width: 20%;
   text-align: left;
-  padding-left: 16px;
+  padding-left: 14px;
 }
 
 .product-table thead th.col-cat {
@@ -460,8 +500,19 @@
   display: block;
 }
 
+.product-thumb-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
 .product-table tbody td.col-name {
-  padding-left: 16px;
+  padding-left: 14px;
+  padding-right: 6px;
 }
 
 .product-table tbody td.col-cat {
@@ -475,8 +526,15 @@
 .product-name-text {
   font-weight: 400;
   color: #111827;
-  font-size: 12.5px;
-  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .product-cat-text {
@@ -735,9 +793,9 @@
 }
 
 .product-modal-card {
-  width: min(920px, 88vw);
-  max-width: 920px;
-  height: 550px;
+  width: min(840px, 88vw);
+  max-width: 840px;
+  height: auto;
   max-height: 90vh;
   background: #ffffff;
   border-radius: 18px;
@@ -823,30 +881,31 @@
   letter-spacing: -0.3px;
 }
 
-/* Grid Atas Form (Kotak foto & form sejajar ke kanan dinaikkan rapat 5px dari teks) */
+/* Grid Atas Form */
 .modal-top-grid {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 250px 1fr;
   gap: 20px;
-  align-items: stretch;
-  margin-bottom: 12px;
+  align-items: start;
+  margin-bottom: 14px;
 }
 
 /* Upload Column */
 .modal-upload-col {
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  height: 250px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .upload-drop-zone {
   background: #fbf2fb;
   border: 1.5px solid #111111;
   border-radius: 14px;
-  width: 100%;
-  height: 100%;
-  flex: 1;
+  width: 250px;
+  height: 250px;
+  flex: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -941,14 +1000,14 @@
 .modal-fields-col {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  height: 100%;
+  gap: 10px;
+  height: auto;
 }
 
 .modal-field-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 
 .modal-label {
@@ -985,7 +1044,7 @@
 
 .modal-input-green {
   height: 45px;
-  padding: 0 14px;
+  padding: 0 8px;
 }
 
 /* Hilangkan spinner panah naik-turun pada input number (Stok) */
@@ -1014,7 +1073,7 @@
 
 .modal-select-green {
   height: 45px;
-  padding: 0 36px 0 14px;
+  padding: 0 36px 0 8px;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
@@ -1088,7 +1147,7 @@
   flex: 1;
   width: 100%;
   height: 100%;
-  padding: 0 14px;
+  padding: 0 8px;
   background: transparent;
 }
 
@@ -1186,9 +1245,9 @@
    MODAL DI DALAM MOCKUP TABLET (KOMPAK SESUAI FRAME TABLET)
    ======================================================== */
 .tablet-chassis.active .product-modal-card {
-  width: min(580px, 94%);
-  max-width: 580px;
-  height: 400px;
+  width: min(630px, 94%);
+  max-width: 630px;
+  height: auto;
   max-height: 94%;
   border-radius: 14px;
 }
@@ -1208,57 +1267,62 @@
 .tablet-chassis.active .modal-form-content {
   flex: 1;
   min-height: 0;
-  padding: 10px 18px 14px;
+  padding: 12px 18px 14px;
 }
 
 .tablet-chassis.active .modal-page-title {
   font-size: 17px;
-  margin: 0 0 5px 0;
+  margin: 0 0 6px 0;
   line-height: 1.2;
 }
 
 .tablet-chassis.active .modal-top-grid {
-  grid-template-columns: 180px 1fr;
-  gap: 12px;
-  align-items: stretch;
-  margin-bottom: 8px;
+  grid-template-columns: 250px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 12px;
 }
 
 .tablet-chassis.active .modal-upload-col {
-  height: 100%;
+  width: 250px;
+  height: 250px;
   display: flex;
+  flex-shrink: 0;
 }
 
 .tablet-chassis.active .upload-drop-zone {
-  height: 100%;
-  flex: 1;
-  border-radius: 11px;
+  width: 250px;
+  height: 250px;
+  flex: none;
+  border-radius: 13px;
 }
 
 .tablet-chassis.active .upload-placeholder-content {
-  padding: 8px;
+  padding: 12px;
 }
 
 .tablet-chassis.active .upload-icon-img {
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
 }
 
 .tablet-chassis.active .upload-main-text {
-  font-size: 13px;
+  font-size: 14.5px;
 }
 
 .tablet-chassis.active .upload-sub-text {
-  font-size: 10.5px;
+  font-size: 11.5px;
 }
 
 .tablet-chassis.active .modal-fields-col {
-  gap: 5px;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: auto;
 }
 
 .tablet-chassis.active .modal-field-group {
-  gap: 2px;
+  gap: 10px;
 }
 
 .tablet-chassis.active .modal-label {
@@ -1268,7 +1332,7 @@
 .tablet-chassis.active .modal-input-green,
 .tablet-chassis.active .modal-select-green,
 .tablet-chassis.active .price-input-wrapper {
-  height: 33px;
+  height: 36px;
   font-size: 12px;
   border-radius: 8px;
 }

@@ -1,4 +1,6 @@
-export default function ProductTable({ products, onDelete }) {
+import { formatProductPrice, formatFullRupiah } from '../../../shared/utils/currencyUtils.js'
+
+export default function ProductTable({ products, onDelete, onEdit }) {
   return (
     <div className="product-table-card">
       <div className="product-table-scroll">
@@ -19,7 +21,7 @@ export default function ProductTable({ products, onDelete }) {
             {products.length === 0 ? (
               <tr>
                 <td colSpan="8" className="table-empty-cell">
-                  Tidak ada produk yang cocok dengan pencarian atau kategori ini.
+                  Belum ada data produk. Silakan klik tombol "+ Tambah Produk" untuk menambahkan.
                 </td>
               </tr>
             ) : (
@@ -38,18 +40,28 @@ export default function ProductTable({ products, onDelete }) {
                   <tr key={item.id || idx}>
                     {/* No */}
                     <td className="col-no">
-                      <span className="no-text">{item.no || `${idx + 1}.`}</span>
+                      <span className="no-text">{`${idx + 1}.`}</span>
                     </td>
 
                     {/* Gambar */}
                     <td className="col-img">
                       <div className="product-thumb-box">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="product-thumb-img"
-                          loading="lazy"
-                        />
+                        {item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="product-thumb-img"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="product-thumb-empty" title="Tidak ada gambar">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <polyline points="21 15 16 10 5 21" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                     </td>
 
@@ -64,8 +76,10 @@ export default function ProductTable({ products, onDelete }) {
                     </td>
 
                     {/* Harga */}
-                    <td className="col-price">
-                      <span className="product-price-text">{item.priceDisplay}</span>
+                    <td className="col-price" title={formatFullRupiah(item.price)}>
+                      <span className="product-price-text">
+                        {formatProductPrice(item.price)}
+                      </span>
                     </td>
 
                     {/* Stok */}
@@ -88,6 +102,7 @@ export default function ProductTable({ products, onDelete }) {
                           type="button"
                           className="btn-action-edit"
                           title="Edit Produk"
+                          onClick={() => onEdit && onEdit(item)}
                         >
                           <img
                             src="/icon-edit.png"

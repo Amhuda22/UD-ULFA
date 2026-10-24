@@ -5,6 +5,7 @@ import { getCurrentFormattedDate } from '../../../shared/utils/dateUtils.js'
 export default function AddProductModal({
   isOpen,
   onClose,
+  isEditMode = false,
   formData,
   imagePreview,
   formErrors,
@@ -50,7 +51,7 @@ export default function AddProductModal({
         {/* Modal Body Form */}
         <form className="modal-form-content" onSubmit={onSubmit} noValidate>
           {/* Judul Modal */}
-          <h2 className="modal-page-title">Tambahkan Produk</h2>
+          <h2 className="modal-page-title">{isEditMode ? 'Edit Produk' : 'Tambahkan Produk'}</h2>
 
           {/* Grid Atas: Kolom Kiri Gambar, Kolom Kanan Detail */}
           <div className="modal-top-grid">
@@ -100,7 +101,7 @@ export default function AddProductModal({
                   id="input-product-name"
                   type="text"
                   className={`modal-input-green ${formErrors.name ? 'is-invalid' : ''}`}
-                  placeholder="Contoh : Buku tulis"
+                  placeholder="Masukkan Nama Produk"
                   value={formData.name}
                   onChange={(e) => onChange('name', e.target.value)}
                 />
@@ -149,6 +150,7 @@ export default function AddProductModal({
                     <input
                       id="input-product-price"
                       type="text"
+                      inputMode="numeric"
                       className={`modal-input-green price-field ${formErrors.price ? 'is-invalid' : ''}`}
                       placeholder=""
                       value={formData.price}
@@ -180,21 +182,6 @@ export default function AddProductModal({
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Baris Bawah: Deskripsi */}
-          <div className="modal-field-group full-width-group">
-            <label className="modal-label" htmlFor="textarea-product-desc">
-              Deskripsi :
-            </label>
-            <textarea
-              id="textarea-product-desc"
-              rows={3}
-              className="modal-textarea-green"
-              placeholder="Masukkan Deskripsi Produk..."
-              value={formData.description}
-              onChange={(e) => onChange('description', e.target.value)}
-            />
           </div>
 
           {/* Baris Tombol Aksi (Batal & Simpan) */}

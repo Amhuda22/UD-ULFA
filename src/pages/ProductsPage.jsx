@@ -17,6 +17,11 @@ export default function ProductsPage() {
     handleSelectMenu,
     handleLogout,
     products,
+    totalCount,
+    lowStockCount,
+    outOfStockCount,
+    selectedStatus,
+    handleSelectStatus,
     searchQuery,
     setSearchQuery,
     selectedCategory,
@@ -24,10 +29,12 @@ export default function ProductsPage() {
     categories,
     deleteProduct,
     isAddModalOpen,
+    isEditMode,
     formData,
     imagePreview,
     formErrors,
     handleOpenAddModal,
+    handleOpenEditModal,
     handleCloseAddModal,
     handleFormChange,
     handleImageSelect,
@@ -66,9 +73,11 @@ export default function ProductsPage() {
 
               {/* 3 Kartu Ringkasan (Total Produk, Stok Menipis, Stok Habis) */}
               <ProductSummaryCards
-                total={120}
-                menipis={8}
-                habis={2}
+                total={totalCount}
+                menipis={lowStockCount}
+                habis={outOfStockCount}
+                selectedStatus={selectedStatus}
+                onSelectStatus={handleSelectStatus}
               />
 
               {/* Baris Pencarian & Tombol Tambah Produk */}
@@ -89,13 +98,15 @@ export default function ProductsPage() {
               <ProductTable
                 products={products}
                 onDelete={deleteProduct}
+                onEdit={handleOpenEditModal}
               />
             </div>
           </section>
 
-          {/* 3. Modal Tambahkan Produk */}
+          {/* 3. Modal Tambahkan / Edit Produk */}
           <AddProductModal
             isOpen={isAddModalOpen}
+            isEditMode={isEditMode}
             onClose={handleCloseAddModal}
             formData={formData}
             imagePreview={imagePreview}

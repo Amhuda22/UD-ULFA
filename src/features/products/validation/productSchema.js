@@ -16,9 +16,8 @@ export const addProductSchema = z.object({
     }),
   stock: z
     .string()
-    .trim()
-    .min(1, 'Stok wajib diisi')
-    .refine((val) => !isNaN(Number(val)) && Number(val) >= 0, {
+    .optional()
+    .refine((val) => !val || (!isNaN(Number(val)) && Number(val) >= 0), {
       message: 'Stok harus berupa angka minimal 0',
     }),
   description: z.string().optional(),
