@@ -1,22 +1,22 @@
 import { useTransactions } from '../features/transactions/hooks/useTransactions.js'
 import DashboardSidebar from '../features/dashboard/components/DashboardSidebar.jsx'
 import DashboardTopBar from '../features/dashboard/components/DashboardTopBar.jsx'
-import TransactionHeader from '../features/transactions/components/TransactionHeader.jsx'
-import TransactionTable from '../features/transactions/components/TransactionTable.jsx'
+import TransactionCatalog from '../features/transactions/components/TransactionCatalog.jsx'
 import TransactionPaymentForm from '../features/transactions/components/TransactionPaymentForm.jsx'
+import TransactionTable from '../features/transactions/components/TransactionTable.jsx'
 import TransactionSummaryCard from '../features/transactions/components/TransactionSummaryCard.jsx'
 import TransactionReceiptModal from '../features/transactions/components/TransactionReceiptModal.jsx'
 import '../features/transactions/styles/transactions.css'
 import './DashboardPage.css'
 
 export default function TransactionsPage() {
-  // Sesuai React Coding SOP: Seluruh logic UI & state dihandle oleh custom hook useTransactions
   const {
     viewMode,
     setViewMode,
     activeMenu,
     handleSelectMenu,
     handleLogout,
+    catalogProducts,
     cartItems,
     totalAmount,
     totalDisplay,
@@ -26,9 +26,17 @@ export default function TransactionsPage() {
     setPaymentMethod,
     searchQuery,
     setSearchQuery,
+    paidAmount,
+    paidAmountFormatted,
+    handlePaidAmountChange,
+    changeAmount,
+    changeDisplay,
     removeCartItem,
-    updateQuantity,
+    incrementQuantity,
+    decrementQuantity,
+    addCartItem,
     handleCheckout,
+    handleCancel,
     isSuccessModalOpen,
     handleCloseSuccessModal,
   } = useTransactions()
@@ -56,39 +64,54 @@ export default function TransactionsPage() {
               slogan="“Akan melayani dengan sepenuh hati”"
             />
 
-            {/* Konten Halaman Transaksi Penjualan */}
+            {/* Konten Halaman Transaksi Penjualan Sesuai Desain Screenshot 1 */}
             <div className="dash-content-body trx-content-body">
-              {/* Header Judul, Pencarian, & Tombol Tambah */}
-              <TransactionHeader
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                onAddClick={() => {
-                  // Default action: alert atau shortcut tambah item cepat
-                  alert('Silakan pilih produk dari halaman Produk atau masukkan nama produk pada kolom pencarian.')
-                }}
-              />
+              {/* Judul Utama Halaman */}
+              <div className="trx-top-header">
+                <h1 className="trx-page-title">Transaksi Penjualan</h1>
+              </div>
 
-              {/* Tabel Daftar Belanja Transaksi */}
-              <TransactionTable
-                items={cartItems}
-                onDeleteItem={removeCartItem}
-                onUpdateQuantity={updateQuantity}
-              />
-
-              {/* Bagian Bawah: Form Pelanggan & Metode Pembayaran + Ringkasan Total */}
-              <div className="trx-bottom-section">
-                <TransactionPaymentForm
-                  customer={customer}
-                  onCustomerChange={setCustomer}
-                  paymentMethod={paymentMethod}
-                  onPaymentMethodChange={setPaymentMethod}
+              {/* Area Split Dua Kolom: Katalog Produk (Kiri) & Keranjang Belanja (Kanan) */}
+              <div className="trx-two-columns">
+                {/* Kolom Kiri: Katalog Produk */}
+                <TransactionCatalog
+                  products={catalogProducts}
+                  searchQuery={searchQuery}
+                  onSearchChange={setSearchQuery}
+                  onAddToCart={addCartItem}
                 />
 
-                <TransactionSummaryCard
-                  totalDisplay={totalDisplay}
-                  onCheckout={handleCheckout}
-                  isDisabled={cartItems.length === 0}
-                />
+                {/* Kolom Kanan: Keranjang Belanja / Detail Transaksi */}
+                <div className="trx-cart-column">
+                  <h2 className="trx-section-title">Keranjang Belanja / Detail Transaksi</h2>
+
+                  {/* Dropdown Pelanggan & Metode Pembayaran */}
+                  <TransactionPaymentForm
+                    customer={customer}
+                    onCustomerChange={setCustomer}
+                    paymentMethod={paymentMethod}
+                    onPaymentMethodChange={setPaymentMethod}
+                  />
+
+                  {/* Tabel Daftar Belanja (Item, Jumlah dengan stepper, Subtotal, Aksi) */}
+                  <TransactionTable
+                    items={cartItems}
+                    onDeleteItem={removeCartItem}
+                    onIncrement={incrementQuantity}
+                    onDecrement={decrementQuantity}
+                  />
+
+                  {/* Bagian Bawah: Uang Dibayar & Kembalian + Total & Tombol Aksi */}
+                  <TransactionSummaryCard
+                    totalDisplay={totalDisplay}
+                    paidAmountFormatted={paidAmountFormatted}
+                    onPaidAmountChange={handlePaidAmountChange}
+                    changeDisplay={changeDisplay}
+                    onCheckout={handleCheckout}
+                    onCancel={handleCancel}
+                    isDisabled={cartItems.length === 0}
+                  />
+                </div>
               </div>
             </div>
           </section>
@@ -102,6 +125,8 @@ export default function TransactionsPage() {
             totalAmount={totalAmount}
             customer={customer}
             paymentMethod={paymentMethod}
+            paidAmount={paidAmount}
+            changeAmount={changeAmount}
           />
         </div>
       </div>

@@ -1,5 +1,57 @@
 import { create } from 'zustand'
 
+export const initialCatalogProducts = [
+  {
+    id: 1,
+    name: 'Buku Tulis',
+    price: 3000,
+    priceDisplay: 'Rp 3.000',
+    image: '/products/buku-tulis.jpg',
+  },
+  {
+    id: 2,
+    name: 'Bolpoin',
+    price: 5000,
+    priceDisplay: 'Rp 5.000',
+    image: '/products/bolpoin.jpg',
+  },
+  {
+    id: 3,
+    name: 'Seragam SD',
+    price: 125000,
+    priceDisplay: 'Rp 125.000',
+    image: '/products/seragam-sd.jpg',
+  },
+  {
+    id: 4,
+    name: 'Kapas',
+    price: 5000,
+    priceDisplay: 'Rp 5.000',
+    image: '/products/kapas.jpg',
+  },
+  {
+    id: 5,
+    name: 'Pensil 2B',
+    price: 2500,
+    priceDisplay: 'Rp 2.500',
+    image: '/products/pensil-2b.jpg',
+  },
+  {
+    id: 6,
+    name: 'Penghapus Joyko',
+    price: 2000,
+    priceDisplay: 'Rp 2.000',
+    image: '/products/penghapus-joyko.jpg',
+  },
+  {
+    id: 7,
+    name: 'Penggaris 30cm',
+    price: 4000,
+    priceDisplay: 'Rp 4.000',
+    image: '/products/penggaris-30cm.jpg',
+  },
+]
+
 export const initialCartItems = [
   {
     id: 1,
@@ -124,14 +176,17 @@ export const initialCartItems = [
 ]
 
 export const useTransactionStore = create((set) => ({
+  catalogProducts: initialCatalogProducts,
   cartItems: initialCartItems,
   customer: 'Umum',
   paymentMethod: 'Tunai',
   searchQuery: '',
+  paidAmount: 300000,
 
   setSearchQuery: (query) => set({ searchQuery: query }),
   setCustomer: (customer) => set({ customer }),
   setPaymentMethod: (method) => set({ paymentMethod: method }),
+  setPaidAmount: (amount) => set({ paidAmount: amount }),
 
   removeCartItem: (id) =>
     set((state) => {
@@ -149,6 +204,42 @@ export const useTransactionStore = create((set) => ({
       const qty = Math.max(1, Number(newQty) || 1)
       const updated = state.cartItems.map((item) => {
         if (item.id === id) {
+          const subtotal = item.price * qty
+          return {
+            ...item,
+            quantity: qty,
+            subtotal,
+            subtotalDisplay: `Rp ${subtotal.toLocaleString('id-ID')}`,
+          }
+        }
+        return item
+      })
+      return { cartItems: updated }
+    }),
+
+  incrementQuantity: (id) =>
+    set((state) => {
+      const updated = state.cartItems.map((item) => {
+        if (item.id === id) {
+          const qty = item.quantity + 1
+          const subtotal = item.price * qty
+          return {
+            ...item,
+            quantity: qty,
+            subtotal,
+            subtotalDisplay: `Rp ${subtotal.toLocaleString('id-ID')}`,
+          }
+        }
+        return item
+      })
+      return { cartItems: updated }
+    }),
+
+  decrementQuantity: (id) =>
+    set((state) => {
+      const updated = state.cartItems.map((item) => {
+        if (item.id === id) {
+          const qty = Math.max(1, item.quantity - 1)
           const subtotal = item.price * qty
           return {
             ...item,
@@ -198,11 +289,21 @@ export const useTransactionStore = create((set) => ({
       return { cartItems: [...state.cartItems, newItem] }
     }),
 
+  cancelTransaction: () =>
+    set({
+      cartItems: [],
+      customer: 'Umum',
+      paymentMethod: 'Tunai',
+      paidAmount: 0,
+      searchQuery: '',
+    }),
+
   resetCart: () =>
     set({
       cartItems: initialCartItems,
       customer: 'Umum',
       paymentMethod: 'Tunai',
+      paidAmount: 300000,
       searchQuery: '',
     }),
 }))

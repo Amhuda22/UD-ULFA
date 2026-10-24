@@ -3,7 +3,7 @@ import { getCurrentDateTimeString } from '../../../shared/utils/dateUtils.js'
 export default function TransactionReceiptModal({
   isOpen,
   onClose,
-  cartItems,
+  cartItems = [],
   totalDisplay,
   totalAmount,
   customer,
@@ -17,19 +17,12 @@ export default function TransactionReceiptModal({
     window.print()
   }
 
-  // Calculate dynamic/default cash paid & change
   const numericTotal = typeof totalAmount === 'number'
     ? totalAmount
     : (cartItems || []).reduce((acc, item) => acc + (item.subtotal || 0), 0)
 
   const numericPaid = (() => {
-    if (paidAmount !== undefined && paidAmount !== null) return Number(paidAmount)
-    if (paymentMethod === 'Tunai') {
-      if (numericTotal === 152000) return 200000
-      if (numericTotal === 0) return 0
-      if (numericTotal % 50000 === 0) return numericTotal
-      return Math.ceil(numericTotal / 50000) * 50000
-    }
+    if (paidAmount !== undefined && paidAmount !== null && paidAmount !== '') return Number(paidAmount)
     return numericTotal
   })()
 
@@ -38,47 +31,34 @@ export default function TransactionReceiptModal({
     return Math.max(0, numericPaid - numericTotal)
   })()
 
-  const formatNumberWithoutRp = (val) => {
-    if (val === undefined || val === null) return '0'
-    if (typeof val === 'number') {
-      return val.toLocaleString('id-ID')
-    }
-    if (typeof val === 'string') {
-      return val.replace(/^Rp\.?\s*/i, '').trim()
-    }
-    return String(val)
+  const formatRp = (val) => {
+    if (val === undefined || val === null) return 'Rp 0'
+    const num = typeof val === 'number' ? val : Number(String(val).replace(/[^0-9]/g, '') || 0)
+    return `Rp ${num.toLocaleString('id-ID')}`
   }
-
-  const totalNumberDisplay = formatNumberWithoutRp(totalDisplay ?? numericTotal)
-  const paidDisplay = formatNumberWithoutRp(numericPaid)
-  const changeDisplay = formatNumberWithoutRp(numericChange)
 
   return (
     <div className="trx-modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
       <div className="receipt-modal-container" onClick={(e) => e.stopPropagation()}>
-        {/* Top Header Bar */}
+        {/* Top Header Bar Gradient "Struk Kasir" */}
         <div className="receipt-modal-header">
           <span className="receipt-modal-header-title">Struk Kasir</span>
         </div>
 
-        {/* Modal Body with Inner Paper Sheet */}
+        {/* Modal Body with Inner White Paper Sheet */}
         <div className="receipt-modal-body">
           {/* Inner White Paper Sheet */}
           <div className="receipt-paper-sheet">
             {/* Brand Logo & Name */}
             <div className="receipt-brand-header">
-              <img
-                src="/store-logo.png"
-                alt="UD.ULFA Logo"
-                className="receipt-brand-icon"
-              />
+              <span className="receipt-brand-icon" aria-hidden="true" />
               <div className="receipt-brand-text">
                 <span className="receipt-brand-name">UD.ULFA</span>
-                <span className="receipt-brand-tagline">
+                <div className="receipt-brand-tagline">
                   <span>Lengkap</span>
                   <span>Dan</span>
                   <span>Terbaik</span>
-                </span>
+                </div>
               </div>
             </div>
 
@@ -104,77 +84,61 @@ export default function TransactionReceiptModal({
               </div>
             </div>
 
-            {/* Items Table Header (Paten / Fixed) */}
-            <table className="receipt-products-table receipt-table-header">
-              <thead>
-                <tr>
-                  <th className="rth-name">Nama Produk</th>
-                  <th className="rth-qty">Jumlah</th>
-                  <th className="rth-price">Harga</th>
-                  <th className="rth-subtotal">Subtotal</th>
-                </tr>
-              </thead>
-            </table>
-
-            {/* Items Table Body (Scrollable container di bawah judul menu) */}
-            <div className="receipt-products-table-wrapper">
-              <table className="receipt-products-table">
-                <tbody>
-                  {cartItems.map((item) => (
-                    <tr key={item.id}>
-                      <td className="rtd-name">{item.name}</td>
-                      <td className="rtd-qty">{item.quantity}</td>
-                      <td className="rtd-price">{formatNumberWithoutRp(item.price ?? item.priceDisplay)}</td>
-                      <td className="rtd-subtotal">{formatNumberWithoutRp(item.subtotal ?? item.subtotalDisplay)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Header Tabel Permanen (Garis atas & bawah hijau permanen di luar scroll) */}
+            <div className="receipt-table-header-bar">
+              <span className="r-col-name">Nama Produk</span>
+              <span className="r-col-qty">Jumlah</span>
+              <span className="r-col-price">Harga</span>
+              <span className="r-col-subtotal">Subtotal</span>
             </div>
 
-            {/* Total & Payment Section */}
-            <div className="receipt-total-summary">
-              <div className="receipt-summary-line total-line">
-                <span className="summary-lbl">Total :</span>
-                <span className="summary-val">{totalNumberDisplay}</span>
-              </div>
-              <div className="receipt-summary-line pay-line">
-                <span className="summary-lbl">Pembayaran :</span>
-                <span className="pay-method-val">{paymentMethod}</span>
-              </div>
+            {/* Area Scroll Khusus Baris Produk */}
+            <div className="receipt-table-scroll-area">
+              {cartItems.map((item) => (
+                <div key={item.id} className="receipt-product-row">
+                  <span className="r-col-name" title={item.name}>{item.name}</span>
+                  <span className="r-col-qty">{item.quantity}</span>
+                  <span className="r-col-price">{formatRp(item.price)}</span>
+                  <span className="r-col-subtotal">{formatRp(item.subtotal || (item.price * item.quantity))}</span>
+                </div>
+              ))}
             </div>
 
-            {/* Bayar & Kembalian Section */}
-            <div className="receipt-cash-summary">
-              <div className="receipt-summary-line cash-line">
-                <span className="summary-lbl">Bayar :</span>
-                <span className="summary-val">{paidDisplay}</span>
+            {/* Dashed Horizontal Divider Line */}
+            <div className="receipt-dashed-line" />
+
+            {/* Summary Block: Total, Bayar, Kembalian */}
+            <div className="receipt-summary-block">
+              <div className="receipt-summary-row">
+                <span className="summary-label">Total :</span>
+                <span className="summary-value">{formatRp(numericTotal)}</span>
               </div>
-              <div className="receipt-summary-line change-line">
-                <span className="summary-lbl">Kembalian :</span>
-                <span className="summary-val">{changeDisplay}</span>
+              <div className="receipt-summary-row">
+                <span className="summary-label">Bayar ({paymentMethod || 'Tunai'}) :</span>
+                <span className="summary-value">{formatRp(numericPaid)}</span>
+              </div>
+              <div className="receipt-summary-row">
+                <span className="summary-label">Kembalian :</span>
+                <span className="summary-value">{formatRp(numericChange)}</span>
               </div>
             </div>
 
-            {/* Footer Note */}
-            <p className="receipt-footer-quote">
-              "Terimakasih atas kunjungan dan kepercayaan<br />Anda berbelanja di toko kami"
-            </p>
+            {/* Footer Quote */}
+            <div className="receipt-footer-quote">
+              <p>&ldquo;Terimakasih atas kunjungan dan kepercayaan</p>
+              <p>Anda berbelanja di toko kami&rdquo;</p>
+            </div>
           </div>
 
-          {/* Action Buttons (outside paper sheet) */}
+          {/* Action Buttons */}
           <div className="receipt-modal-actions">
             <button type="button" className="receipt-btn-print" onClick={handlePrint}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M6 3C6 2.44772 6.44772 2 7 2H17C17.5523 2 18 2.44772 18 3V6H6V3ZM4 8C2.89543 8 2 8.89543 2 10V16C2 17.1046 2.89543 18 4 18H6V21C6 21.5523 6.44772 22 7 22H17C17.5523 22 18 21.5523 18 21V18H20C21.1046 18 22 17.1046 22 16V10C22 8.89543 21.1046 8 20 8H4ZM8 14H16V20H8V14ZM10 16H14V18H10V16Z"
-                />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
               </svg>
               <span>Cetak Struk</span>
             </button>
-            <button type="button" className="receipt-btn-close" onClick={onClose}>
+            <button type="button" className="receipt-btn-close-alt" onClick={onClose}>
               Tutup
             </button>
           </div>

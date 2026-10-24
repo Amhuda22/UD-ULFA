@@ -5,7 +5,7 @@ export default function TransactionPaymentForm({
   onPaymentMethodChange,
 }) {
   return (
-    <div className="trx-payment-form">
+    <div className="trx-customer-row">
       {/* Pelanggan */}
       <div className="trx-form-group">
         <label className="trx-form-label" htmlFor="trx-customer-select">
